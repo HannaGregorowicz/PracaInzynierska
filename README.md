@@ -18,8 +18,8 @@
 ##### Funkcjonalności jeżeli zostanie trochę czasu – w kolejności od najważniejszych:
 *	Rozszerzenie panelu administratora o możliwość dodawania informacji o nowych instruktorach i kursach
 *	Dodanie formy kontaktu przez formularz na stronie
+* Możliwość dodania opinii o zajęciach/instruktorach przez kursantów
 *	Być może zakładka typu blog z możliwością dodawania informacji o nadchodzących wydarzeniach lub ogólnie tematyce tanecznej
-
 
 ##### Technologie:
 *	Backend: Node.js + TypeScript + MongoDB jako baza danych

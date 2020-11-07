@@ -1,19 +1,19 @@
-import {Express, Request, Response} from "express";
+import { Express, Request, Response } from "express";
 
 export class Server {
+  private app: Express;
 
-    private app: Express;
+  constructor(app: Express) {
+    this.app = app;
 
-    constructor(app: Express) {
-        this.app = app;
+    this.app.get("/", (req: Request, res: Response): void => {
+      res.send("It works!");
+    });
+  }
 
-        this.app.get("/", (req: Request, res: Response): void => {
-            res.send("It works!");
-        })
-    }
-
-    public start(port: number): void {
-        this.app.listen(port, () => console.log(`Server listening on port ${port}!`));
-    }
-
+  public start(port: number): void {
+    this.app.listen(port, () =>
+      console.log(`Server listening on port ${port}!`)
+    );
+  }
 }

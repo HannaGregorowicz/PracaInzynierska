@@ -6,7 +6,8 @@
 - [ ] zakładka z instruktorami
 - [ ] cennik
 - [ ] kontakt
-- [ ] zrobione modele bazy danych i uzupełnione przykładowe dane
+- [x] zrobione modele bazy danych 
+- [ ] uzupełnione przykładowe dane
 
 #### 9-15.11:
 - [ ] rejestracja użytkowników

@@ -1,13 +1,24 @@
 import React from "react";
+import {
+  faHome,
+  faClipboardList,
+  faCalendarAlt,
+  faUserFriends,
+  faMoneyBillAlt
+} from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
+import logo from "../../images/logo.png";
 
 const navStyle: React.CSSProperties = {
-  height: "70px",
+  height: "10vh",
+  width: "100%",
   background: "#3e0c6e",
   fontSize: "20px",
   color: "#FFFFFF",
   borderBottom: "3px solid #240345",
-  display: "flex"
+  display: "flex",
+  position: "fixed",
+  zIndex: 10
 };
 
 const ulStyle: React.CSSProperties = {
@@ -16,16 +27,26 @@ const ulStyle: React.CSSProperties = {
   alignItems: "center"
 };
 
+const logoStyle: React.CSSProperties = {
+  maxHeight: "9vh"
+};
+
 export const Navbar = () => {
   return (
     <nav style={navStyle}>
       <ul style={ulStyle}>
-        <MenuItem href="/" name="<Tu będzie logo>" />
-        <MenuItem href="/" name="Strona główna" />
-        <MenuItem href="/classes" name="Zajęcia" />
-        <MenuItem href="/schedule" name="Grafik" />
-        <MenuItem href="/instructors" name="Instruktorzy" />
-        <MenuItem href="/prices" name="Cennik" />
+        <a href="/">
+          <img src={logo} style={logoStyle} alt="logo" />
+        </a>
+        <MenuItem href="/" name="Strona główna" icon={faHome} />
+        <MenuItem href="/classes" name="Zajęcia" icon={faClipboardList} />
+        <MenuItem href="/schedule" name="Grafik" icon={faCalendarAlt} />
+        <MenuItem
+          href="/instructors"
+          name="Instruktorzy"
+          icon={faUserFriends}
+        />
+        <MenuItem href="/prices" name="Cennik" icon={faMoneyBillAlt} />
       </ul>
     </nav>
   );

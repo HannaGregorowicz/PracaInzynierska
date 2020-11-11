@@ -6,4 +6,60 @@
 body {
   margin: 0 auto;
   padding: 0;
+  background-color: #cfcadb;
+}
+
+.bottomDivider {
+  width: 100%;
+  height: 3px;
+  background-color: #240345;
+  margin-bottom: 10vh;
+}
+
+.topDivider {
+  width: 100%;
+  height: 3px;
+  background-color: #240345;
+  margin-top: 10vh;
+}
+
+.contentContainer {
+  width: 80%;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 30px;
+  text-align: justify;
+  font-size: 14pt;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.gridItem {
+  margin: 10% 10% 10% 10%;
+}
+
+.gridImage {
+  max-width: 80%;
+  max-height: 80%;
+  margin: 10% 10% 10% 10%;
+}
+
+.contentContainer h2 {
+  font-size: 25pt;
+  color: #3e0c6e;
+}
+
+.center {
+  text-align: center;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.fasIcon {
+  margin-right: 5px;
 }

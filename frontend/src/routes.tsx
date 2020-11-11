@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./components/pages/homePage/HomePage";
 
 export default function Routes() {
   return (
@@ -14,10 +15,6 @@ export default function Routes() {
     </Router>
   );
 }
-
-const HomePage = () => {
-  return <h2>Strona główna</h2>;
-};
 
 const Classes = () => {
   return <h2>Zajęcia</h2>;

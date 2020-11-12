@@ -4,7 +4,7 @@
 - [x] pasek nawigacyjny
 - [ ] stopka
 - [x] strona główna
-- [ ] zakładka z zajęciami
+- [x] zakładka z zajęciami
 - [ ] zakładka z instruktorami
 - [ ] cennik
 - [ ] kontakt

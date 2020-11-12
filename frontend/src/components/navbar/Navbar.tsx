@@ -31,24 +31,31 @@ const logoStyle: React.CSSProperties = {
   maxHeight: "9vh"
 };
 
+const divStyle: React.CSSProperties = {
+  height: "10vh"
+};
+
 export const Navbar = () => {
   return (
-    <nav style={navStyle}>
-      <ul style={ulStyle}>
-        <a href="/">
-          <img src={logo} style={logoStyle} alt="logo" />
-        </a>
-        <MenuItem href="/" name="Strona główna" icon={faHome} />
-        <MenuItem href="/classes" name="Zajęcia" icon={faClipboardList} />
-        <MenuItem href="/schedule" name="Grafik" icon={faCalendarAlt} />
-        <MenuItem
-          href="/instructors"
-          name="Instruktorzy"
-          icon={faUserFriends}
-        />
-        <MenuItem href="/prices" name="Cennik" icon={faMoneyBillAlt} />
-      </ul>
-    </nav>
+    <>
+      <nav style={navStyle}>
+        <ul style={ulStyle}>
+          <a href="/">
+            <img src={logo} style={logoStyle} alt="logo" />
+          </a>
+          <MenuItem href="/" name="Strona główna" icon={faHome} />
+          <MenuItem href="/classes" name="Zajęcia" icon={faClipboardList} />
+          <MenuItem href="/schedule" name="Grafik" icon={faCalendarAlt} />
+          <MenuItem
+            href="/instructors"
+            name="Instruktorzy"
+            icon={faUserFriends}
+          />
+          <MenuItem href="/prices" name="Cennik" icon={faMoneyBillAlt} />
+        </ul>
+      </nav>
+      <div style={divStyle}></div>
+    </>
   );
 };
 

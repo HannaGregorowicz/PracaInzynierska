@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./components/pages/homePage/HomePage";
+import Classes from "./components/pages/classes/Classes";
 
 export default function Routes() {
   return (
@@ -15,10 +16,6 @@ export default function Routes() {
     </Router>
   );
 }
-
-const Classes = () => {
-  return <h2>Zajęcia</h2>;
-};
 
 const Schedule = () => {
   return <h2>Grafik</h2>;

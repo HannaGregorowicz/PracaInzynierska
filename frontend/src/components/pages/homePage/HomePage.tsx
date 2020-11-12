@@ -20,6 +20,11 @@ const spanStyle: React.CSSProperties = {
   fontSize: "50pt"
 };
 
+const imageStyle: React.CSSProperties = {
+  maxWidth: "80%",
+  height: "80%"
+};
+
 const HomePage = () => {
   return (
     <>
@@ -32,8 +37,8 @@ const HomePage = () => {
         <div className="gridContainer">
           <div className="gridItem">{sampleText}</div>
 
-          <img src={img1} className="gridImage" alt="img1" />
-          <img src={img2} className="gridImage" alt="img2" />
+          <img src={img1} style={imageStyle} className="gridItem" alt="img1" />
+          <img src={img2} style={imageStyle} className="gridItem" alt="img2" />
           <div className="gridItem">{sampleText}</div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 ## Plan pracy:
 
 #### 1-8.11:
-- [ ] strona główna
+- [x] pasek nawigacyjny
+- [ ] stopka
+- [x] strona główna
 - [ ] zakładka z zajęciami
 - [ ] zakładka z instruktorami
 - [ ] cennik

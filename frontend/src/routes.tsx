@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./components/pages/homePage/HomePage";
 import Classes from "./components/pages/classes/Classes";
+import Prices from "./components/pages/prices/Prices";
 
 export default function Routes() {
   return (
@@ -23,8 +24,4 @@ const Schedule = () => {
 
 const Instructors = () => {
   return <h2>Instruktorzy</h2>;
-};
-
-const Prices = () => {
-  return <h2>Cennik</h2>;
 };

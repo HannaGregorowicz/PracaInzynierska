@@ -25,6 +25,7 @@ const Classes = () => {
         <h2 className="center">Zajęcia w naszej szkole</h2>
         <div style={gridContainerStyle}>{formattedClasses}</div>
       </div>
+      <div className="topDivider" />
     </>
   );
 };

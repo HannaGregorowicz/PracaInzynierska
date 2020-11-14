@@ -1,0 +1,41 @@
+import React from "react";
+
+const itemStyle: React.CSSProperties = {
+  height: "15vh",
+  backgroundColor: "#6b1275",
+  color: "#ffffff",
+  borderRadius: "10px",
+  padding: "10px",
+  fontSize: "15pt",
+  border: "solid 4px #3e0c6e"
+};
+
+const flexContainerStyle: React.CSSProperties = {
+  height: "65%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between"
+};
+
+const moreInfoStyle: React.CSSProperties = {
+  fontSize: "10pt",
+  position: "relative",
+  bottom: "-10%"
+};
+
+const PriceItem = (props: any) => {
+  return (
+    <div className="gridItem center" style={itemStyle}>
+      {/* <div style={titleStyle}>{props.name}</div>
+      <div style={priceStyle}>{props.price}</div> */}
+      <div style={flexContainerStyle}>
+        <div>{props.name}</div>
+        <div>{props.price}</div>
+      </div>
+
+      {props.info ? <div style={moreInfoStyle}>{props.info}</div> : null}
+    </div>
+  );
+};
+
+export default PriceItem;

@@ -46,6 +46,11 @@ body {
   color: #3e0c6e;
 }
 
+.contentContainer h3 {
+  font-size: 20pt;
+  color: #3e0c6e;
+}
+
 .center {
   text-align: center;
 }

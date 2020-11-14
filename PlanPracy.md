@@ -6,7 +6,7 @@
 - [x] strona główna
 - [x] zakładka z zajęciami
 - [ ] zakładka z instruktorami
-- [ ] cennik
+- [x] cennik
 - [ ] kontakt
 - [x] zrobione modele bazy danych 
 - [ ] uzupełnione przykładowe dane

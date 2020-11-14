@@ -4,7 +4,6 @@ import { classes } from "./temporaryClasses";
 
 const gridContainerStyle: React.CSSProperties = {
   display: "grid",
-
   gridTemplateColumns: "1fr 1fr 1fr 1fr"
 };
 
@@ -23,6 +22,7 @@ const Classes = () => {
     <>
       <div className="bottomDivider"></div>
       <div className="contentContainer">
+        <h2 className="center">Zajęcia w naszej szkole</h2>
         <div style={gridContainerStyle}>{formattedClasses}</div>
       </div>
     </>

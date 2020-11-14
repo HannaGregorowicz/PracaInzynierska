@@ -2,7 +2,7 @@
 
 #### 1-8.11:
 - [x] pasek nawigacyjny
-- [ ] stopka
+- [x] stopka
 - [x] strona główna
 - [x] zakładka z zajęciami
 - [ ] zakładka z instruktorami

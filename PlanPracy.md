@@ -7,7 +7,7 @@
 - [x] zakładka z zajęciami
 - [ ] zakładka z instruktorami
 - [x] cennik
-- [ ] kontakt
+- [x] kontakt
 - [x] zrobione modele bazy danych 
 - [ ] uzupełnione przykładowe dane
 

@@ -4,7 +4,8 @@ import {
   faClipboardList,
   faCalendarAlt,
   faUserFriends,
-  faMoneyBillAlt
+  faMoneyBillAlt,
+  faPhoneAlt
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
 import logo from "../../images/logo.png";
@@ -52,6 +53,7 @@ export const Navbar = () => {
             icon={faUserFriends}
           />
           <MenuItem href="/prices" name="Cennik" icon={faMoneyBillAlt} />
+          <MenuItem href="/contact" name="Kontakt" icon={faPhoneAlt} />
         </ul>
       </nav>
       <div style={divStyle}></div>

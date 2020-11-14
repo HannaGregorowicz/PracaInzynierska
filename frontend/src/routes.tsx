@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./components/pages/homePage/HomePage";
 import Classes from "./components/pages/classes/Classes";
 import Prices from "./components/pages/prices/Prices";
+import Contact from "./components/pages/contact/Contact";
 
 export default function Routes() {
   return (
@@ -13,6 +14,7 @@ export default function Routes() {
         <Route path="/schedule" component={Schedule} />
         <Route path="/instructors" component={Instructors} />
         <Route path="/prices" component={Prices} />
+        <Route path="/contact" component={Contact} />
       </Switch>
     </Router>
   );

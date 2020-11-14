@@ -26,7 +26,6 @@ const Prices = () => {
           Honorujemy również karty Multisport Plus oraz OK System bez dopłat!
         </h3>
       </div>
-
       <div className="topDivider" />
     </>
   );

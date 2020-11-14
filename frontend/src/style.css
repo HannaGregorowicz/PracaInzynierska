@@ -62,3 +62,7 @@ body {
 .fasIcon {
   margin-right: 5px;
 }
+
+.map {
+  height: 40vh;
+}

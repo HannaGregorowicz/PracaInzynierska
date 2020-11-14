@@ -18,6 +18,7 @@ const Contact = () => {
           <Address />
         </div>
       </div>
+      <div className="topDivider" />
     </>
   );
 };

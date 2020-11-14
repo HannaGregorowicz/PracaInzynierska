@@ -66,3 +66,7 @@ body {
 .map {
   height: 40vh;
 }
+
+.address * {
+  margin-bottom: 10px;
+}

@@ -43,7 +43,6 @@ const HomePage = () => {
         </div>
       </div>
       <div className="topDivider" />
-      <div style={divStyle} />
     </>
   );
 };

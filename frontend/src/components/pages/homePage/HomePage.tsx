@@ -1,8 +1,19 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import Background from "../../../images/homePage/main-image.jpg";
 import img1 from "../../../images/homePage/img1.jpg";
 import img2 from "../../../images/homePage/img2.jpg";
 import { sampleText } from "../../../sampleText";
+
+const largeGridStyle: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr"
+};
+
+const smallGridStyle: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1fr"
+};
 
 const divStyle: React.CSSProperties = {
   height: "100vh",
@@ -16,16 +27,23 @@ const divStyle: React.CSSProperties = {
 
 const spanStyle: React.CSSProperties = {
   position: "relative",
-  top: "25%",
+  top: "15%",
   fontSize: "50pt"
 };
 
 const imageStyle: React.CSSProperties = {
-  maxWidth: "80%",
-  height: "80%"
+  maxWidth: "90%"
+};
+
+const imageStyleSmall: React.CSSProperties = {
+  maxWidth: "90%"
 };
 
 const HomePage = () => {
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1200px)"
+  });
+
   return (
     <>
       <div style={divStyle}>
@@ -34,12 +52,21 @@ const HomePage = () => {
       <div className="bottomDivider" />
       <div className="contentContainer">
         <h2 className="center"> Witaj w Modern Dance Studio! </h2>
-        <div className="gridContainer">
+        <div style={isDesktop ? largeGridStyle : smallGridStyle}>
+          <img
+            src={img1}
+            style={isDesktop ? imageStyle : imageStyleSmall}
+            className={isDesktop ? "gridItem" : "gridItemSmall"}
+            alt="img1"
+          />
           <div className="gridItem">{sampleText}</div>
-
-          <img src={img1} style={imageStyle} className="gridItem" alt="img1" />
-          <img src={img2} style={imageStyle} className="gridItem" alt="img2" />
           <div className="gridItem">{sampleText}</div>
+          <img
+            src={img2}
+            style={isDesktop ? imageStyle : imageStyleSmall}
+            className={isDesktop ? "gridItem" : "gridItemSmall"}
+            alt="img2"
+          />
         </div>
       </div>
       <div className="topDivider" />

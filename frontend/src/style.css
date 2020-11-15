@@ -32,13 +32,12 @@ body {
   font-size: 14pt;
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .gridItem {
   margin: 10% 10% 10% 10%;
+}
+
+.gridItemSmall {
+  margin: 5% 5% 5% 5%;
 }
 
 .contentContainer h2 {

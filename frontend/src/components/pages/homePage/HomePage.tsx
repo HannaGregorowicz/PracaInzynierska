@@ -32,11 +32,7 @@ const spanStyle: React.CSSProperties = {
 };
 
 const imageStyle: React.CSSProperties = {
-  maxWidth: "90%"
-};
-
-const imageStyleSmall: React.CSSProperties = {
-  maxWidth: "90%"
+  maxWidth: "80%"
 };
 
 const HomePage = () => {
@@ -53,20 +49,10 @@ const HomePage = () => {
       <div className="contentContainer">
         <h2 className="center"> Witaj w Modern Dance Studio! </h2>
         <div style={isDesktop ? largeGridStyle : smallGridStyle}>
-          <img
-            src={img1}
-            style={isDesktop ? imageStyle : imageStyleSmall}
-            className={isDesktop ? "gridItem" : "gridItemSmall"}
-            alt="img1"
-          />
+          <img src={img1} style={imageStyle} className="gridItem" alt="img1" />
           <div className="gridItem">{sampleText}</div>
           <div className="gridItem">{sampleText}</div>
-          <img
-            src={img2}
-            style={isDesktop ? imageStyle : imageStyleSmall}
-            className={isDesktop ? "gridItem" : "gridItemSmall"}
-            alt="img2"
-          />
+          <img src={img2} style={imageStyle} className="gridItem" alt="img2" />
         </div>
       </div>
       <div className="topDivider" />

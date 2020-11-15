@@ -97,7 +97,7 @@ const SocialMedia = () => {
       <div
         className="fb-page"
         data-href="https://www.facebook.com/facebook"
-        data-width="400"
+        data-width="300"
         data-hide-cover="false"
         data-show-facepile="false"
       ></div>

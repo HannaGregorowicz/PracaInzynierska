@@ -65,3 +65,7 @@ body {
 .address * {
   margin-bottom: 10px;
 }
+
+.hidden {
+  transform: translateX(-40vw);
+}

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import OneClass from "./OneClass";
-import { classes } from "./temporaryClasses";
+import { IClasses } from "../../../data/dataTypes";
+import { getClasses } from "../../../data/getData";
 
 const gridDesktopStyle: React.CSSProperties = {
   display: "grid",
@@ -19,6 +20,7 @@ const gridMobileStyle: React.CSSProperties = {
 };
 
 const Classes = () => {
+  const [classes, setClasses] = useState<IClasses[]>([]);
   const isDesktop = useMediaQuery({
     query: "(min-width: 1200px)"
   });
@@ -27,15 +29,26 @@ const Classes = () => {
     query: "(max-width: 600px)"
   });
 
-  const formattedClasses = classes.map(oneClass => (
-    <OneClass
-      className="gridItem"
-      name={oneClass.name}
-      description={oneClass.description}
-      groups={oneClass.groups}
-      imageName={oneClass.imageName}
-    />
-  ));
+  const loadData = async () => {
+    setClasses(await getClasses());
+  };
+
+  useEffect(() => {
+    loadData();
+  });
+
+  const formattedClasses = classes
+    ? classes.map((oneClass, index) => (
+        <OneClass
+          key={index}
+          className="gridItem"
+          name={oneClass.name}
+          description={oneClass.description}
+          groups={oneClass.groups}
+          imageName={oneClass.imageName}
+        />
+      ))
+    : [];
 
   return (
     <>

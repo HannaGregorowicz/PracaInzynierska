@@ -1,10 +1,17 @@
 import mongoose from "mongoose";
-import { groupSchema } from "./group";
 
 const classSchema = new mongoose.Schema({
   name: String,
   description: String,
-  groups: [groupSchema]
+  imageName: String,
+  groups: [
+    {
+      id: Number,
+      day: String,
+      time: String,
+      level: String
+    }
+  ]
 });
 
-const Class = (module.exports = mongoose.model("Class", classSchema));
+export const Class = mongoose.model("Class", classSchema);

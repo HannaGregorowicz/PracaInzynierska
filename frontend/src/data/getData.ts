@@ -4,9 +4,9 @@ export const getClasses = async () => {
   let parsedClasses: IClasses[] = [];
   try {
     const fetchedClasses = await fetch("/classes");
-    parsedClasses = await fetchedClasses.json();
-  } catch (err) {
-    console.log(err);
-  }
+    if (fetchedClasses) {
+      parsedClasses = await fetchedClasses.json();
+    }
+  } catch (err) {}
   return parsedClasses;
 };

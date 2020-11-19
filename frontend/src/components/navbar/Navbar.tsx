@@ -8,7 +8,9 @@ import {
   faUserFriends,
   faMoneyBillAlt,
   faPhoneAlt,
-  faBars
+  faBars,
+  faUserPlus,
+  faSignInAlt
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
 import logo from "../../images/logo.png";
@@ -22,6 +24,7 @@ const navStyle: React.CSSProperties = {
   borderBottom: "3px solid #240345",
   display: "flex",
   position: "fixed",
+  justifyContent: "space-between",
   zIndex: 7
 };
 
@@ -45,6 +48,26 @@ const ulSmallStyle: React.CSSProperties = {
   borderBottom: "3px solid #240345",
   transform: "translateX(0) !important",
   transition: "transform 0.5s ease-in"
+};
+
+const ulLoginStyle: React.CSSProperties = {
+  ...ulStyle,
+  marginRight: "15px"
+};
+
+const ulLogInSmallStyle: React.CSSProperties = {
+  ...ulStyle,
+  display: "block",
+  position: "absolute",
+  top: "50vh",
+  zIndex: 6,
+  transform: "translateX(0) !important",
+  transition: "transform 0.5s ease-in"
+};
+
+const flexboxContainerStyle: React.CSSProperties = {
+  display: "flex",
+  marginRight: "5vw"
 };
 
 const logoStyle: React.CSSProperties = {
@@ -90,23 +113,32 @@ export const Navbar = () => {
             onClick={setNavbar}
           />
         </div>
-        <a href="/">
-          <img src={logo} style={logoStyle} alt="logo" />
-        </a>
+        <div style={flexboxContainerStyle}>
+          <a href="/">
+            <img src={logo} style={logoStyle} alt="logo" />
+          </a>
+          <ul
+            style={isDesktop ? ulStyle : ulSmallStyle}
+            className={isDesktop ? "" : showNavbar ? "" : "hidden"}
+          >
+            <MenuItem href="/" name="Strona główna" icon={faHome} />
+            <MenuItem href="/classes" name="Zajęcia" icon={faClipboardList} />
+            <MenuItem href="/schedule" name="Grafik" icon={faCalendarAlt} />
+            <MenuItem
+              href="/instructors"
+              name="Instruktorzy"
+              icon={faUserFriends}
+            />
+            <MenuItem href="/prices" name="Cennik" icon={faMoneyBillAlt} />
+            <MenuItem href="/contact" name="Kontakt" icon={faPhoneAlt} />
+          </ul>
+        </div>
         <ul
-          style={isDesktop ? ulStyle : ulSmallStyle}
+          style={isDesktop ? ulLoginStyle : ulLogInSmallStyle}
           className={isDesktop ? "" : showNavbar ? "" : "hidden"}
         >
-          <MenuItem href="/" name="Strona główna" icon={faHome} />
-          <MenuItem href="/classes" name="Zajęcia" icon={faClipboardList} />
-          <MenuItem href="/schedule" name="Grafik" icon={faCalendarAlt} />
-          <MenuItem
-            href="/instructors"
-            name="Instruktorzy"
-            icon={faUserFriends}
-          />
-          <MenuItem href="/prices" name="Cennik" icon={faMoneyBillAlt} />
-          <MenuItem href="/contact" name="Kontakt" icon={faPhoneAlt} />
+          <MenuItem href="/login" name="Zaloguj się" icon={faSignInAlt} />
+          <MenuItem href="/register" name="Zarejestruj się" icon={faUserPlus} />
         </ul>
       </nav>
       <div style={divStyle}></div>

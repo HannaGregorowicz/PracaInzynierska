@@ -15,6 +15,8 @@ export default function Routes() {
         <Route path="/instructors" component={Instructors} />
         <Route path="/prices" component={Prices} />
         <Route path="/contact" component={Contact} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/register" component={Register} />
       </Switch>
     </Router>
   );
@@ -26,4 +28,12 @@ const Schedule = () => {
 
 const Instructors = () => {
   return <h2>Instruktorzy</h2>;
+};
+
+const LogIn = () => {
+  return <h2>Zaloguj się!</h2>;
+};
+
+const Register = () => {
+  return <h2>Zarejestruj się!</h2>;
 };

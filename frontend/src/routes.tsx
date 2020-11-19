@@ -4,6 +4,7 @@ import HomePage from "./components/pages/homePage/HomePage";
 import Classes from "./components/pages/classes/Classes";
 import Prices from "./components/pages/prices/Prices";
 import Contact from "./components/pages/contact/Contact";
+import LogInPanel from "./components/pages/logIn/LogInPanel";
 
 export default function Routes() {
   return (
@@ -15,8 +16,7 @@ export default function Routes() {
         <Route path="/instructors" component={Instructors} />
         <Route path="/prices" component={Prices} />
         <Route path="/contact" component={Contact} />
-        <Route path="/login" component={LogIn} />
-        <Route path="/register" component={Register} />
+        <Route path="/login" component={LogInPanel} />
       </Switch>
     </Router>
   );
@@ -28,12 +28,4 @@ const Schedule = () => {
 
 const Instructors = () => {
   return <h2>Instruktorzy</h2>;
-};
-
-const LogIn = () => {
-  return <h2>Zaloguj się!</h2>;
-};
-
-const Register = () => {
-  return <h2>Zarejestruj się!</h2>;
 };

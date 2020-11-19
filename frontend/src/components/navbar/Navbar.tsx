@@ -9,7 +9,6 @@ import {
   faMoneyBillAlt,
   faPhoneAlt,
   faBars,
-  faUserPlus,
   faSignInAlt
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
@@ -137,8 +136,11 @@ export const Navbar = () => {
           style={isDesktop ? ulLoginStyle : ulLogInSmallStyle}
           className={isDesktop ? "" : showNavbar ? "" : "hidden"}
         >
-          <MenuItem href="/login" name="Zaloguj się" icon={faSignInAlt} />
-          <MenuItem href="/register" name="Zarejestruj się" icon={faUserPlus} />
+          <MenuItem
+            href="/login"
+            name="Zaloguj się / Załóż konto"
+            icon={faSignInAlt}
+          />
         </ul>
       </nav>
       <div style={divStyle}></div>

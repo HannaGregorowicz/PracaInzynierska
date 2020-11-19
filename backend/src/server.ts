@@ -1,5 +1,5 @@
 import { Express, Request, Response } from "express";
-import { getClasses } from "./database/seedDatabase";
+import { routes } from "./routes";
 
 export class Server {
   private app: Express;
@@ -11,12 +11,7 @@ export class Server {
       res.send("It works!");
     });
 
-    this.app.get(
-      "/classes",
-      async (req: Request, res: Response): Promise<void> => {
-        res.json(await getClasses());
-      }
-    );
+    routes(this.app);
   }
 
   public start(port: number): void {

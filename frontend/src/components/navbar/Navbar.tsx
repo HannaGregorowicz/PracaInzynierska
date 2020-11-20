@@ -40,7 +40,7 @@ const ulSmallStyle: React.CSSProperties = {
   position: "absolute",
   top: "10vh",
   backgroundColor: "#3e0c6e",
-  width: "40%",
+  width: "55%",
   height: "100vh",
   opacity: "0.8",
   zIndex: 6,

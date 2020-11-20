@@ -1,4 +1,4 @@
-import { Express, Request, Response } from "express";
+import { Express, Request, Response, json } from "express";
 import { routes } from "./routes";
 
 export class Server {
@@ -7,6 +7,7 @@ export class Server {
   constructor(app: Express) {
     this.app = app;
 
+    this.app.use(json());
     this.app.get("/", (req: Request, res: Response) => {
       res.send("It works!");
     });

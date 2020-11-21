@@ -45,6 +45,16 @@ const Register = () => {
             style={inputStyle}
           />
           <br />
+          <label style={labelStyle}>Numer telefonu:</label>
+          <br />
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Podaj numer telefonu"
+            style={inputStyle}
+          />
+          <br />
           <label style={labelStyle}>Hasło:</label>
           <br />
           <input
@@ -65,6 +75,7 @@ const Register = () => {
             style={inputStyle}
           />
           <br />
+
           <input type="submit" value="Załóż konto!" style={inputStyle}></input>
         </form>
       </div>

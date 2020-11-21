@@ -7,7 +7,4 @@ const instructorSchema = new mongoose.Schema({
   description: String
 });
 
-const Instructor = (module.exports = mongoose.model(
-  "Instructor",
-  instructorSchema
-));
+export const Instructor = mongoose.model("Instructor", instructorSchema);

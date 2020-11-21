@@ -11,4 +11,4 @@ const personSchema = new mongoose.Schema({
   groupsIds: [String]
 });
 
-const Person = (module.exports = mongoose.model("Person", personSchema));
+export const Person = mongoose.model("Person", personSchema);

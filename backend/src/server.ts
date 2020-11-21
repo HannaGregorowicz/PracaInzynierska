@@ -15,9 +15,9 @@ export class Server {
     routes(this.app);
   }
 
-  public start(port: number): void {
+  public start = (port: number) => {
     this.app.listen(port, () =>
       console.log(`Server listening on port ${port}!`)
     );
-  }
+  };
 }

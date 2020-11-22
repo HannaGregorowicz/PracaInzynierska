@@ -82,11 +82,16 @@ const Register = () => {
         lastName: lastName,
         phone: phone
       };
-      makeLocalRequest("/register", "POST", JSON.stringify(body));
+      try {
+        makeLocalRequest("/register", "POST", JSON.stringify(body));
+        alert("Utworzono nowe konto! Możesz się teraz zalogować.");
+        window.location.reload(false);
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
-  // TODO: Refactor to smaller components
   return (
     <>
       <div className="center">

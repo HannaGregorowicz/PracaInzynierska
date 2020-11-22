@@ -3,6 +3,11 @@ import { RegisterRequestBody } from "../dataTypes/requestsBodies";
 import { Person } from "../database/models/person";
 import { IPerson } from "../dataTypes/person";
 
+export const isEmailInDb = async (params: any) => {
+  const emailExists = await Person.exists(params);
+  return emailExists;
+};
+
 const parseBodyToPerson = (body: RegisterRequestBody) => {
   if (body && body.email && body.firstName && body.lastName && body.password) {
     const parsedBody: IPerson = {

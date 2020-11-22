@@ -3,15 +3,17 @@ export const makeLocalRequest = async (
   method: string,
   reqBody?: any
 ) => {
+  let res;
   try {
-    await fetch(path, {
+    res = await fetch(path, {
       method: method,
       headers: {
         "Content-Type": "application/json"
       },
-      body: reqBody ? reqBody : {}
+      body: reqBody ? reqBody : null
     });
   } catch (err) {
     console.error(err);
   }
+  return res;
 };

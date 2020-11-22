@@ -69,3 +69,8 @@ body {
 .hidden {
   transform: translateX(-60vw);
 }
+
+.required:before {
+  content: "*";
+  color: #ff0000;
+}

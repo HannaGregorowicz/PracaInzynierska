@@ -11,3 +11,9 @@ export const labelStyle: React.CSSProperties = {
   display: "inline-block",
   marginTop: "20px"
 };
+
+export const errorStyle: React.CSSProperties = {
+  color: "#ff0000",
+  fontSize: "12pt",
+  marginBottom: 0
+};

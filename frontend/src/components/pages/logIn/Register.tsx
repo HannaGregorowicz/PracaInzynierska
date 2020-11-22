@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent } from "react";
 import sha256 from "crypto-js/sha256";
-import { labelStyle, inputStyle, errorStyle } from "./formStyles";
 import { makeLocalRequest } from "../../../utils/requests";
+import FormElement from "./FormElement";
+import { StyledInput } from "./formStyles";
 
 const Register = () => {
   // This isn't right solution, because if there were more form fields it would be terrible to write
@@ -94,89 +95,56 @@ const Register = () => {
           Zarejestruj się!
         </h3>
         <form onSubmit={handleSubmit}>
-          <label style={labelStyle} className="required">
-            E-mail:
-          </label>
-          <br />
-          <input
-            onChange={handleEmailChange}
-            type="email"
+          <FormElement
+            displayName="E-mail"
             name="email"
-            placeholder="Podaj e-mail"
-            style={inputStyle}
+            type="email"
+            onChange={handleEmailChange}
+            message={emailMessage}
             required
           />
-          {emailMessage ? <p style={errorStyle}>{emailMessage}</p> : <br />}
 
-          <label style={labelStyle} className="required">
-            Imię:
-          </label>
-          <br />
-          <input
-            onChange={handleFirstNameChange}
-            type="text"
+          <FormElement
+            displayName="Imię"
             name="firstName"
-            placeholder="Podaj imię"
-            style={inputStyle}
-            required
-          />
-          <br />
-          <label style={labelStyle} className="required">
-            Nazwisko
-          </label>
-          <br />
-          <input
-            onChange={handleLastNameChange}
             type="text"
-            name="lastName"
-            placeholder="Podaj nazwisko"
-            style={inputStyle}
+            onChange={handleFirstNameChange}
             required
           />
-          <br />
-          <label style={labelStyle}>Numer telefonu:</label>
-          <br />
-          <input
-            onChange={handlePhoneChange}
-            type="tel"
-            name="phone"
-            placeholder="Podaj numer telefonu"
-            style={inputStyle}
-          />
-          <br />
-          <label style={labelStyle} className="required">
-            Hasło:
-          </label>
-          <br />
-          <input
-            onChange={handlePasswordChange}
-            minLength={8}
-            type="password"
-            name="password"
-            placeholder="Wpisz hasło"
-            style={inputStyle}
-            required
-          />
-          {passwordMessage ? (
-            <p style={errorStyle}>{passwordMessage}</p>
-          ) : (
-            <br />
-          )}
-          <label style={labelStyle} className="required">
-            Potwierdź hasło:
-          </label>
-          <br />
-          <input
-            onChange={handleConfirmPasswordChange}
-            type="password"
-            name="passwordConfirm"
-            placeholder="Potwierdź hasło"
-            style={inputStyle}
-            required
-          />
-          <br />
 
-          <input type="submit" value="Załóż konto!" style={inputStyle}></input>
+          <FormElement
+            displayName="Nazwisko"
+            name="lastName"
+            type="text"
+            onChange={handleLastNameChange}
+            required
+          />
+
+          <FormElement
+            displayName="Numer telefonu"
+            name="phone"
+            type="tel"
+            onChange={handlePhoneChange}
+          />
+
+          <FormElement
+            displayName="Hasło"
+            name="password"
+            type="password"
+            onChange={handlePasswordChange}
+            message={passwordMessage}
+            required
+          />
+
+          <FormElement
+            displayName="Ponownie hasło"
+            name="passwordConfirm"
+            type="password"
+            onChange={handleConfirmPasswordChange}
+            required
+          />
+          <br />
+          <StyledInput type="submit" value="Załóż konto!"></StyledInput>
         </form>
       </div>
     </>

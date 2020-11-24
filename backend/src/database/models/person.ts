@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+export interface IPerson extends mongoose.Document {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: string;
+  groupsIds: string[];
+}
+
 const personSchema = new mongoose.Schema({
   id: String,
   firstName: String,
@@ -11,4 +22,4 @@ const personSchema = new mongoose.Schema({
   groupsIds: [String]
 });
 
-export const Person = mongoose.model("Person", personSchema);
+export const Person = mongoose.model<IPerson>("Person", personSchema);

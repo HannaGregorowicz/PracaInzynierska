@@ -9,7 +9,8 @@ import {
   faMoneyBillAlt,
   faPhoneAlt,
   faBars,
-  faSignInAlt
+  faSignInAlt,
+  faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
 import logo from "../../images/logo.png";
@@ -102,6 +103,14 @@ export const Navbar = () => {
     setShowNavbar(!showNavbar);
   };
 
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
+
+  // TODO: Fix responsive navbar when screen is wide but small height
+
   return (
     <>
       <nav style={navStyle}>
@@ -136,11 +145,20 @@ export const Navbar = () => {
           style={isDesktop ? ulLoginStyle : ulLogInSmallStyle}
           className={isDesktop ? "" : showNavbar ? "" : "hidden"}
         >
-          <MenuItem
-            href="/login"
-            name="Zaloguj się / Załóż konto"
-            icon={faSignInAlt}
-          />
+          {token ? (
+            <MenuItem
+              onClick={handleLogout}
+              href="/"
+              name="Wyloguj"
+              icon={faSignOutAlt}
+            />
+          ) : (
+            <MenuItem
+              href="/login"
+              name="Zaloguj się / Załóż konto"
+              icon={faSignInAlt}
+            />
+          )}
         </ul>
       </nav>
       <div style={divStyle}></div>

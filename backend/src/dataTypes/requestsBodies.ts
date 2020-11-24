@@ -5,3 +5,8 @@ export type RegisterRequestBody = {
   phone?: string;
   password?: string;
 };
+
+export type LoginRequestBody = {
+  email: string;
+  password: string;
+};

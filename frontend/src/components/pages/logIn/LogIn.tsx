@@ -1,15 +1,19 @@
 import React, { useState, ChangeEvent } from "react";
 import sha256 from "crypto-js/sha256";
-import { labelStyle, inputStyle, StyledInput } from "./formStyles";
+import { StyledInput } from "./formStyles";
 import FormElement from "./FormElement";
+import { makeLocalRequest } from "../../../utils/requests";
 
 const divStyle: React.CSSProperties = {
   borderRight: "solid 3px #3e0c6e"
 };
 
+// TODO (optional): Add password reseting
+
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     const encryptedPass = sha256(event.target.value as string).toString();
@@ -20,11 +24,45 @@ const LogIn = () => {
     setEmail(event.target.value);
   };
 
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    setErrorMessage("");
+
+    if (email && password) {
+      const body = {
+        email: email,
+        password: password
+      };
+      try {
+        const res = await makeLocalRequest(
+          "/login",
+          "POST",
+          JSON.stringify(body)
+        );
+        if (res) {
+          if (res.status === 200) {
+            const token = await res.text();
+            localStorage.setItem("token", token);
+            window.location.href = "/";
+            // TODO: Check if this is a good solution, probably
+            // react redirect (router) would be better
+          } else if (res.status === 401) {
+            setErrorMessage("Nieprawidłowy email lub hasło!");
+          } else {
+            console.error("Something went wrong!");
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
   return (
     <>
       <div style={divStyle} className="center">
         <h3 className="center">Zaloguj się!</h3>
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <FormElement
             displayName="E-mail"
             name="email"
@@ -38,8 +76,10 @@ const LogIn = () => {
             name="password"
             type="password"
             onChange={handlePasswordChange}
+            message={errorMessage}
             required
           />
+
           <br />
           <StyledInput type="submit" value="Zaloguj się!"></StyledInput>
         </form>

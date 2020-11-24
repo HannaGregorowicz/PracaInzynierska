@@ -14,84 +14,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
 import logo from "../../images/logo.png";
-
-const navStyle: React.CSSProperties = {
-  height: "10vh",
-  width: "100%",
-  background: "#3e0c6e",
-  fontSize: "20px",
-  color: "#FFFFFF",
-  borderBottom: "3px solid #240345",
-  display: "flex",
-  position: "fixed",
-  justifyContent: "space-between",
-  zIndex: 7
-};
-
-const ulStyle: React.CSSProperties = {
-  listStyleType: "none",
-  display: "flex",
-  alignItems: "center",
-  transform: "translateY(40vh) !important"
-};
-
-const ulSmallStyle: React.CSSProperties = {
-  ...ulStyle,
-  display: "block",
-  position: "absolute",
-  top: "10vh",
-  backgroundColor: "#3e0c6e",
-  width: "55%",
-  height: "100vh",
-  opacity: "0.8",
-  zIndex: 6,
-  borderBottom: "3px solid #240345",
-  transform: "translateX(0) !important",
-  transition: "transform 0.5s ease-in"
-};
-
-const ulLoginStyle: React.CSSProperties = {
-  ...ulStyle,
-  marginRight: "15px"
-};
-
-const ulLogInSmallStyle: React.CSSProperties = {
-  ...ulStyle,
-  display: "block",
-  position: "absolute",
-  top: "50vh",
-  zIndex: 6,
-  transform: "translateX(0) !important",
-  transition: "transform 0.5s ease-in"
-};
-
-const flexboxContainerStyle: React.CSSProperties = {
-  display: "flex",
-  marginRight: "5vw"
-};
-
-const logoStyle: React.CSSProperties = {
-  maxHeight: "9vh",
-  zIndex: 8
-};
-
-const divStyle: React.CSSProperties = {
-  height: "10vh"
-};
-
-const menuButtonStyle: React.CSSProperties = {
-  cursor: "pointer",
-  position: "absolute",
-  zIndex: 10,
-  top: "20px",
-  right: "20px",
-  display: "none"
-};
-
-const menuButtonVisible: React.CSSProperties = {
-  ...menuButtonStyle,
-  display: "block"
-};
+import {
+  navStyle,
+  menuButtonStyle,
+  menuButtonVisible,
+  flexboxContainerStyle,
+  logoStyle,
+  ulStyle,
+  ulSmallStyle,
+  ulLoginStyle,
+  ulLogInSmallStyle,
+  divStyle
+} from "./navbarStyles";
 
 export const Navbar = () => {
   const isDesktop = useMediaQuery({

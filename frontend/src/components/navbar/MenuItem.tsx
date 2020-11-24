@@ -29,7 +29,7 @@ const MenuItem = (props: any) => {
   return (
     <li style={isDesktop ? liStyle : liSmallStyle}>
       <FontAwesomeIcon className="fasIcon" icon={props.icon} />
-      <StyledA href={props.href}>{props.name}</StyledA>
+      <StyledA href={props.href} onClick={props.onClick}>{props.name}</StyledA>
     </li>
   );
 };

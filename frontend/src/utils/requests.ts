@@ -1,12 +1,12 @@
 export const makeLocalRequest = async (
   path: string,
-  method: string,
+  method?: string,
   reqBody?: any
 ) => {
   let res;
   try {
     res = await fetch(path, {
-      method: method,
+      method: method ? method : "GET",
       headers: {
         "Content-Type": "application/json"
       },

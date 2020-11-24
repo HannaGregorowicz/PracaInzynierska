@@ -4,6 +4,8 @@ import { makeLocalRequest } from "../../../utils/requests";
 import FormElement from "./FormElement";
 import { StyledInput } from "./formStyles";
 
+// TODO: Add captcha and terms
+
 const Register = () => {
   // This isn't right solution, because if there were more form fields it would be terrible to write
   // but it's enough for now, I'll try to change it if I have some more time.
@@ -83,7 +85,7 @@ const Register = () => {
         phone: phone
       };
       try {
-        makeLocalRequest("/register", "POST", JSON.stringify(body));
+        await makeLocalRequest("/register", "POST", JSON.stringify(body));
         alert("Utworzono nowe konto! Możesz się teraz zalogować.");
         window.location.reload(false);
       } catch (err) {

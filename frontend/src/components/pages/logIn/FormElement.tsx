@@ -14,7 +14,7 @@ const FormElement = (props: any) => {
         name={props.name}
         placeholder={`Podaj ${props.displayName.toLowerCase()}`}
         style={inputStyle}
-        {...(props.required ? "required" : null)}
+        required={props.required}
       />
       {props.message ? <p style={errorStyle}>{props.message}</p> : <br />}
     </>

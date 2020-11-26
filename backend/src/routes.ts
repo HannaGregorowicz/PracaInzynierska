@@ -1,33 +1,36 @@
-import { Express, Request, Response } from "express";
+import express, { Request, Response } from "express";
 import { getClasses } from "./database/seedDatabase";
 import { register, isEmailInDb } from "./scripts/registerUser";
 import { createToken } from "./scripts/loginUser";
 
+const router = express.Router();
 // TODO: Add more status codes if enough time
 
-export const routes = (app: Express) => {
-  app.get("/classes", async (req: Request, res: Response) => {
-    res.json(await getClasses());
-  });
+router.get("/", async (req: Request, res: Response) => {});
 
-  app.post("/register", async (req: Request, res: Response) => {
-    await register(req.body);
-    res.redirect("/");
-  });
+router.get("/classes", async (req: Request, res: Response) => {
+  res.json(await getClasses());
+});
 
-  app.post("/login", async (req: Request, res: Response) => {
-    const token = await createToken(req.body);
-    if (token) {
-      res.status(200).send(token);
-    } else {
-      res.status(401).send("Authentication error");
-    }
-  });
+router.post("/register", async (req: Request, res: Response) => {
+  await register(req.body);
+  res.redirect("/");
+});
 
-  app.get(
-    "/register/emailExists/:email",
-    async (req: Request, res: Response) => {
-      res.json({ emailInDb: await isEmailInDb(req.params) });
-    }
-  );
-};
+router.post("/login", async (req: Request, res: Response) => {
+  const token = await createToken(req.body);
+  if (token) {
+    res.status(200).send(token);
+  } else {
+    res.status(401).send("Authentication error");
+  }
+});
+
+router.get(
+  "/register/emailExists/:email",
+  async (req: Request, res: Response) => {
+    res.json({ emailInDb: await isEmailInDb(req.params) });
+  }
+);
+
+export default router;

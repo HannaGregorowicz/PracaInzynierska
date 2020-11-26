@@ -1,22 +1,8 @@
-import { Express, json } from "express";
-import { routes } from "./routes";
-import { isAuth } from "./middleware/isAuth";
+import { Express } from "express";
+import config from "./config";
 
-export class Server {
-  private app: Express;
-
-  constructor(app: Express) {
-    this.app = app;
-
-    this.app.use(json());
-    this.app.use(isAuth);
-
-    routes(this.app);
-  }
-
-  public start = (port: number) => {
-    this.app.listen(port, () =>
-      console.log(`Server listening on port ${port}!`)
-    );
-  };
-}
+export const startServer = (app: Express) => {
+  app.listen(config.serverPort, () => {
+    console.log(`Server listening on port ${config.serverPort}!`);
+  });
+};

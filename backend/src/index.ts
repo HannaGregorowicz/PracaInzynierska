@@ -1,15 +1,17 @@
 import express from "express";
-import { Server } from "./Server";
+import { startServer } from "./Server";
 import { connectToDatabase } from "./database/connection";
+import isAuth from "./middleware/isAuth";
+import router from "./routes";
 // import { seedDatabase } from "./database/seedDatabase";
+
 const app = express();
 
-const port = 5000;
+app.use(express.json());
+app.use(isAuth);
 
-const server = new Server(app);
+app.use(router);
 
-(async () => {
-  server.start(port);
-  connectToDatabase();
-  // await seedDatabase();
-})();
+startServer(app);
+
+connectToDatabase();

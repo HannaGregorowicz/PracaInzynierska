@@ -5,10 +5,13 @@ import Classes from "./components/pages/classes/Classes";
 import Prices from "./components/pages/prices/Prices";
 import Contact from "./components/pages/contact/Contact";
 import LogInPanel from "./components/pages/logIn/LogInPanel";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 
 export default function Routes() {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/classes" component={Classes} />
@@ -18,6 +21,7 @@ export default function Routes() {
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={LogInPanel} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

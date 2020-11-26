@@ -3,6 +3,7 @@ import sha256 from "crypto-js/sha256";
 import { StyledInput } from "./formStyles";
 import FormElement from "./FormElement";
 import { makeLocalRequest } from "../../../utils/requests";
+import { saveToken } from "../../../utils/jsonwebtoken";
 
 const divStyle: React.CSSProperties = {
   borderRight: "solid 3px #3e0c6e"
@@ -42,10 +43,8 @@ const LogIn = () => {
         if (res) {
           if (res.status === 200) {
             const token = await res.text();
-            localStorage.setItem("token", token);
+            saveToken(token);
             window.location.href = "/";
-            // TODO: Check if this is a good solution, probably
-            // react redirect (router) would be better
           } else if (res.status === 401) {
             setErrorMessage("Nieprawidłowy email lub hasło!");
           } else {

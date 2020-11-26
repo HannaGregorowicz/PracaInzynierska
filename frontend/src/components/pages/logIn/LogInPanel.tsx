@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router";
 import LogIn from "./LogIn";
 import Register from "./Register";
 
@@ -8,7 +9,10 @@ const gridContainerStyle: React.CSSProperties = {
 };
 
 const LogInPanel = () => {
-  return (
+  return localStorage.getItem("token") ? (
+    // TODO: Change to user profile
+    <Redirect to="/" />
+  ) : (
     <>
       <div className="bottomDivider" />
       <div className="contentContainer">

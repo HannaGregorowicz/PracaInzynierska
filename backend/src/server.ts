@@ -1,5 +1,6 @@
-import { Express, Request, Response, json } from "express";
+import { Express, json } from "express";
 import { routes } from "./routes";
+import { isAuth } from "./middleware/isAuth";
 
 export class Server {
   private app: Express;
@@ -8,9 +9,7 @@ export class Server {
     this.app = app;
 
     this.app.use(json());
-    this.app.get("/", (req: Request, res: Response) => {
-      res.send("It works!");
-    });
+    this.app.use(isAuth);
 
     routes(this.app);
   }

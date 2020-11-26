@@ -32,4 +32,7 @@ export const isAuth = (req: Request, res: Response, next: Function) => {
       }
     }
   }
+  return next();
 };
+
+export default isAuth;

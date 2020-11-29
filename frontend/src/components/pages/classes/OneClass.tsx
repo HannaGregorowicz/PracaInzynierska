@@ -18,7 +18,12 @@ const imageStyle: React.CSSProperties = {
 const OneClass = (props: any) => {
   const image = require(`../../../images/classes/${props.imageName}`);
   const formattedGroups = props.groups.map((group: any) => (
-    <Group name={group.day} time={group.time} key={group.id} />
+    <Group
+      name={group.day}
+      time={group.time}
+      level={group.level}
+      key={group.id}
+    />
   ));
 
   return (
@@ -26,6 +31,9 @@ const OneClass = (props: any) => {
       <img src={image} alt={props.imageName} style={imageStyle}></img>
       <h2 className="center">{props.name}</h2>
       <p style={textStyle}>{props.description}</p>
+      {props.groups ? (
+        <Group name="dzień" time="godzina" level="poziom" className="lighter" />
+      ) : null}
       {formattedGroups}
     </div>
   );

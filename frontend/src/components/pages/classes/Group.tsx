@@ -1,16 +1,22 @@
 import React from "react";
+import { shortDayName } from "../../../utils/dayParser";
 
 const groupStyle: React.CSSProperties = {
   width: "100%",
   background: "#6b1275",
   margin: "4px",
-  borderRadius: "4px"
+  borderRadius: "4px",
+  padding: "3px",
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr 1fr"
 };
 
 const Group = (props: any) => {
   return (
-    <div style={groupStyle} className="center white">
-      {props.name} {props.time}
+    <div style={groupStyle} className={props.className + " center white"}>
+      <p>{shortDayName(props.name)}</p>
+      <p>{props.time}</p>
+      <p>{props.level}</p>
     </div>
   );
 };

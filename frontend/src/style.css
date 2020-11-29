@@ -70,6 +70,10 @@ body {
   transform: translateX(-60vw);
 }
 
+.lighter {
+  opacity: 70%;
+}
+
 .required:before {
   content: "*";
   color: #ff0000;

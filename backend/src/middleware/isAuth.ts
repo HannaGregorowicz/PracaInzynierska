@@ -16,7 +16,7 @@ export const isAuth = (req: Request, res: Response, next: Function) => {
   const authHeader = req.get("Authorization");
 
   if (authHeader) {
-    const token = authHeader.split(" ")[2];
+    const token = authHeader.split(" ")[1];
     if (token && token !== "") {
       let decodedToken;
       try {

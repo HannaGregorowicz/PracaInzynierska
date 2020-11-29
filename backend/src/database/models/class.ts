@@ -6,7 +6,7 @@ const classSchema = new mongoose.Schema({
   imageName: String,
   groups: [
     {
-      id: Number,
+      id: String,
       day: String,
       time: String,
       level: String

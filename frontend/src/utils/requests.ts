@@ -8,7 +8,8 @@ export const makeLocalRequest = async (
     res = await fetch(path, {
       method: method ? method : "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: reqBody ? reqBody : null
     });

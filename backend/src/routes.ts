@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { getClasses } from "./database/seedDatabase";
 import { register, isEmailInDb } from "./scripts/registerUser";
 import { createToken } from "./scripts/loginUser";
+import { getUserData } from "./scripts/getUserData";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -32,5 +33,9 @@ router.get(
     res.json({ emailInDb: await isEmailInDb(req.params) });
   }
 );
+
+router.get("/userData/:personId", async (req: Request, res: Response) => {
+  await getUserData(req, res);
+});
 
 export default router;

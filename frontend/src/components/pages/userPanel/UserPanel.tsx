@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import { isTokenValid } from "../../../utils/jsonwebtoken";
 import { Redirect } from "react-router";
-import styled from "styled-components";
 import UserClasses from "./tabs/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
 import Incoming from "./tabs/Incoming";
 import ToMakeUp from "./tabs/ToMakeUp";
 import History from "./tabs/History";
+import { getPersonData } from "../../../data/getData";
+import { IPerson } from "../../../data/dataTypes";
 
 const tabStyle: React.CSSProperties = {
-  display: "flex"
+  display: "flex",
+  marginBottom: "20px"
 };
 
 const Item = styled.p`
@@ -33,16 +36,34 @@ const UserPanel = () => {
   const history = "history";
 
   const [mode, setMode] = useState(userClasses);
+  const [userData, setUserData] = useState<IPerson | null>(null);
+
+  const getUserData = async () => {
+    const personId = localStorage.getItem("personId");
+    if (personId) {
+      const data = await getPersonData(personId);
+      return data;
+    } else {
+      return null;
+    }
+  };
+
+  const loadData = async () => {
+    setUserData(await getUserData());
+  };
+
+  useEffect(() => {
+    loadData();
+  });
 
   const handleClick = (value: string) => {
     setMode(value);
-    console.log(mode);
   };
 
   const renderTab = (mode: string) => {
     switch (mode) {
       case userClasses:
-        return <UserClasses />;
+        return <UserClasses groups={userData ? userData.groupsIds : null} />;
       case userSchedule:
         return <UserSchedule />;
       case incoming:

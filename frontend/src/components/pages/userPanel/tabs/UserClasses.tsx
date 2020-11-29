@@ -1,10 +1,12 @@
 import React from "react";
 
-const UserClasses = () => {
-  return (
+const UserClasses = (props: any) => {
+  return props.groups ? (
     <>
-      <h3>Classes</h3>
+      <h3>Twoje zajęcia</h3>
     </>
+  ) : (
+    <h3>Brak zajęć!</h3>
   );
 };
 

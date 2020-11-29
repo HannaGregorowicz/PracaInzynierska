@@ -1,16 +1,29 @@
 import mongoose from "mongoose";
 
+export interface IGroup extends mongoose.Document {
+  id: string;
+  className: string;
+  day: string;
+  instructor: string;
+  time: string;
+  peopleLimit: number;
+  room: string;
+  type: string;
+  level: string;
+  peopleIds: string[];
+}
+
 export const groupSchema = new mongoose.Schema({
   id: String,
   className: String,
   day: String,
-  startTime: Number,
-  duration: Number,
+  instructor: String,
+  time: String,
   peopleLimit: Number,
   room: String,
   type: String,
   level: String,
-  currentPeopleIds: [String]
+  peopleIds: [String]
 });
 
-export const Group = mongoose.model("Group", groupSchema);
+export const Group = mongoose.model<IGroup>("Group", groupSchema);

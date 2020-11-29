@@ -44,7 +44,7 @@ const LogIn = () => {
           if (res.status === 200) {
             const token = await res.text();
             saveToken(token);
-            window.location.href = "/";
+            window.location.href = "/user";
           } else if (res.status === 401) {
             setErrorMessage("Nieprawidłowy email lub hasło!");
           } else {

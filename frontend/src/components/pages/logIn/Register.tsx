@@ -88,6 +88,7 @@ const Register = () => {
         await makeLocalRequest("/register", "POST", JSON.stringify(body));
         alert("Utworzono nowe konto! Możesz się teraz zalogować.");
         window.location.reload(false);
+        // TODO: React toastify
       } catch (err) {
         console.error(err);
       }

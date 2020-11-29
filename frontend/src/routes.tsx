@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 import HomePage from "./components/pages/homePage/HomePage";
 import Classes from "./components/pages/classes/Classes";
 import Prices from "./components/pages/prices/Prices";
 import Contact from "./components/pages/contact/Contact";
 import LogInPanel from "./components/pages/logIn/LogInPanel";
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
+import UserPanel from "./components/pages/userPanel/UserPanel";
 
 export default function Routes() {
   return (
@@ -20,6 +21,7 @@ export default function Routes() {
         <Route path="/prices" component={Prices} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={LogInPanel} />
+        <Route path="/user" component={UserPanel} />
       </Switch>
       <Footer />
     </Router>

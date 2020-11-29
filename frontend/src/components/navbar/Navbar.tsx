@@ -10,7 +10,8 @@ import {
   faPhoneAlt,
   faBars,
   faSignInAlt,
-  faSignOutAlt
+  faSignOutAlt,
+  faUser
 } from "@fortawesome/free-solid-svg-icons";
 import MenuItem from "./MenuItem";
 import logo from "../../images/logo.png";
@@ -79,12 +80,15 @@ export const Navbar = () => {
           className={isDesktop ? "" : showNavbar ? "" : "hidden"}
         >
           {isTokenValid() ? (
-            <MenuItem
-              onClick={handleLogout}
-              href="/"
-              name="Wyloguj"
-              icon={faSignOutAlt}
-            />
+            <>
+              <MenuItem href="/user" name="Twoje konto" icon={faUser} />
+              <MenuItem
+                onClick={handleLogout}
+                href="/"
+                name="Wyloguj"
+                icon={faSignOutAlt}
+              />
+            </>
           ) : (
             <MenuItem
               href="/login"

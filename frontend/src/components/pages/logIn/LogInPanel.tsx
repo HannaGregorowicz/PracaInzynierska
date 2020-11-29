@@ -11,8 +11,7 @@ const gridContainerStyle: React.CSSProperties = {
 
 const LogInPanel = () => {
   return isTokenValid() ? (
-    // TODO: Change to user profile
-    <Redirect to="/" />
+    <Redirect to="/user" />
   ) : (
     <>
       <div className="bottomDivider" />

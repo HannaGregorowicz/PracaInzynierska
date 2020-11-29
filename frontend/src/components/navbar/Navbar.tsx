@@ -26,6 +26,7 @@ import {
   ulLogInSmallStyle,
   divStyle
 } from "./navbarStyles";
+import { isTokenValid } from "../../utils/jsonwebtoken";
 
 export const Navbar = () => {
   const isDesktop = useMediaQuery({
@@ -36,8 +37,6 @@ export const Navbar = () => {
   const setNavbar = () => {
     setShowNavbar(!showNavbar);
   };
-
-  const token = localStorage.getItem("token");
 
   const handleLogout = () => {
     localStorage.clear();
@@ -79,7 +78,7 @@ export const Navbar = () => {
           style={isDesktop ? ulLoginStyle : ulLogInSmallStyle}
           className={isDesktop ? "" : showNavbar ? "" : "hidden"}
         >
-          {token ? (
+          {isTokenValid() ? (
             <MenuItem
               onClick={handleLogout}
               href="/"

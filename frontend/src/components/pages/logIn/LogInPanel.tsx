@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router";
 import LogIn from "./LogIn";
 import Register from "./Register";
+import { isTokenValid } from "../../../utils/jsonwebtoken";
 
 const gridContainerStyle: React.CSSProperties = {
   display: "grid",
@@ -9,7 +10,7 @@ const gridContainerStyle: React.CSSProperties = {
 };
 
 const LogInPanel = () => {
-  return localStorage.getItem("token") ? (
+  return isTokenValid() ? (
     // TODO: Change to user profile
     <Redirect to="/" />
   ) : (

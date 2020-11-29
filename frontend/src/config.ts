@@ -1,8 +1,5 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 const config = {
-  JWT_KEY: process.env.JWT_KEY
+  JWT_KEY: process.env.REACT_APP_JWT_KEY
 };
 
 export default config;

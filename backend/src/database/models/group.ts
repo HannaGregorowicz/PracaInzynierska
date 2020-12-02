@@ -8,7 +8,6 @@ export interface IGroup extends mongoose.Document {
   time: string;
   peopleLimit: number;
   room: string;
-  type: string;
   level: string;
   peopleIds: string[];
 }
@@ -21,7 +20,6 @@ export const groupSchema = new mongoose.Schema({
   time: String,
   peopleLimit: Number,
   room: String,
-  type: String,
   level: String,
   peopleIds: [String]
 });

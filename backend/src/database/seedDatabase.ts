@@ -1,5 +1,5 @@
 import { Class } from "./models/class";
-import { classes } from "./exampleData";
+import { classes } from "../exampleData";
 
 export const seedDatabase = async () => {
   for (const oneClass of classes) {

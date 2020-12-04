@@ -8,6 +8,7 @@ import Prices from "./components/pages/prices/Prices";
 import Contact from "./components/pages/contact/Contact";
 import LogInPanel from "./components/pages/logIn/LogInPanel";
 import UserPanel from "./components/pages/userPanel/UserPanel";
+import Schedule from "./components/pages/schedule/Schedule";
 
 export default function Routes() {
   return (
@@ -27,10 +28,6 @@ export default function Routes() {
     </Router>
   );
 }
-
-const Schedule = () => {
-  return <h2>Grafik</h2>;
-};
 
 const Instructors = () => {
   return <h2>Instruktorzy</h2>;

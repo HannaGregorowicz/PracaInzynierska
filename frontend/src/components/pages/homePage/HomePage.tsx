@@ -28,7 +28,8 @@ const divStyle: React.CSSProperties = {
 const spanStyle: React.CSSProperties = {
   position: "relative",
   top: "15%",
-  fontSize: "50pt"
+  fontSize: "50pt",
+  color: "#3e0c6e"
 };
 
 const imageStyle: React.CSSProperties = {
@@ -43,7 +44,9 @@ const HomePage = () => {
   return (
     <>
       <div style={divStyle}>
-        <span style={spanStyle}>Modern Dance Studio</span>
+        <span style={spanStyle}>
+          <b>Modern Dance Studio</b>
+        </span>
       </div>
       <div className="bottomDivider" />
       <div className="contentContainer">

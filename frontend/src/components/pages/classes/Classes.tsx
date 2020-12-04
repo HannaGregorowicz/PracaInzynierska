@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import OneClass from "./OneClass";
-import { IClasses } from "../../../data/dataTypes";
+import { IClass } from "../../../data/dataTypes";
 import { getClasses } from "../../../data/getData";
 
 const gridDesktopStyle: React.CSSProperties = {
@@ -20,7 +20,7 @@ const gridMobileStyle: React.CSSProperties = {
 };
 
 const Classes = () => {
-  const [classes, setClasses] = useState<IClasses[]>([]);
+  const [classes, setClasses] = useState<IClass[]>([]);
   const isDesktop = useMediaQuery({
     query: "(min-width: 1200px)"
   });

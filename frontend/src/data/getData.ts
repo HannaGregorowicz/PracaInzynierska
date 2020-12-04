@@ -1,13 +1,13 @@
-import { IClasses, IPerson } from "./dataTypes";
+import { IClass, IPerson, IGroup } from "./dataTypes";
 import { makeLocalRequest } from "../utils/requests";
 
 export const getClasses = async () => {
-  let parsedClasses: IClasses[] = [];
+  let classes: IClass[] = [];
   const fetchedClasses = await makeLocalRequest("/classes");
   if (fetchedClasses) {
-    parsedClasses = await fetchedClasses.json();
+    classes = await fetchedClasses.json();
   }
-  return parsedClasses;
+  return classes;
 };
 
 export const getPersonData = async (personId: string) => {
@@ -17,4 +17,13 @@ export const getPersonData = async (personId: string) => {
     personData = await data.json();
   }
   return personData;
+};
+
+export const getGroups = async () => {
+  let groups: IGroup[] = [];
+  const fetchedGroups = await makeLocalRequest("/groups");
+  if (fetchedGroups) {
+    groups = await fetchedGroups.json();
+  }
+  return groups;
 };

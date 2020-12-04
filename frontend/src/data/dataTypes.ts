@@ -1,4 +1,4 @@
-export interface IClasses {
+export interface IClass {
   name: string;
   description: string;
   imageName: string;
@@ -19,4 +19,16 @@ export interface IPerson {
   phone: string;
   role: string;
   groupsIds: string[];
+}
+
+export interface IGroup {
+  id: string;
+  name: string;
+  day: string;
+  instructor: string;
+  time: string;
+  peopleLimit: number;
+  room: string;
+  level: string;
+  peopleIds: string[];
 }

@@ -1,16 +1,24 @@
 import express, { Request, Response } from "express";
-import { getClasses } from "./database/seedDatabase";
 import { register, isEmailInDb } from "./scripts/registerUser";
 import { createToken } from "./scripts/loginUser";
-import { getUserData } from "./scripts/getUserData";
+import { getUser } from "./scripts/getUser";
+import { getClasses, getGroups } from "./scripts/getData";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
 
 router.get("/", async (req: Request, res: Response) => {});
 
-router.get("/classes", async (req: Request, res: Response) => {
-  res.json(await getClasses());
+router.get("/classes", (req: Request, res: Response) => {
+  getClasses(req, res);
+});
+
+router.get("/groups", (req: Request, res: Response) => {
+  getGroups(req, res);
+});
+
+router.get("/userData/:personId", (req: Request, res: Response) => {
+  getUser(req, res);
 });
 
 router.post("/register", async (req: Request, res: Response) => {
@@ -33,9 +41,5 @@ router.get(
     res.json({ emailInDb: await isEmailInDb(req.params) });
   }
 );
-
-router.get("/userData/:personId", async (req: Request, res: Response) => {
-  await getUserData(req, res);
-});
 
 export default router;

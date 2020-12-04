@@ -22,7 +22,6 @@ export const isAuth = (req: Request, res: Response, next: Function) => {
       try {
         decodedToken = jwt.verify(token, config.JWT_KEY);
       } catch (err) {
-        console.log(err);
         return next();
       }
       if (decodedToken) {

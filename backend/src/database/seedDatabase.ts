@@ -13,7 +13,3 @@ export const seedDatabase = async () => {
   }
   console.log("Database seeded.");
 };
-
-export const getClasses = async () => {
-  return await Class.find();
-};

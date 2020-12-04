@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export interface IGroup extends mongoose.Document {
   id: string;
-  className: string;
+  name: string;
   day: string;
   instructor: string;
   time: string;
@@ -14,7 +14,7 @@ export interface IGroup extends mongoose.Document {
 
 export const groupSchema = new mongoose.Schema({
   id: String,
-  className: String,
+  name: String,
   day: String,
   instructor: String,
   time: String,

@@ -5,7 +5,13 @@ const tableStyle: React.CSSProperties = {
   width: "95%",
   margin: "auto",
   border: "1px solid black",
-  borderCollapse: "collapse"
+  borderCollapse: "collapse",
+  textAlign: "center"
+};
+
+const tdStyle: React.CSSProperties = {
+  border: "1px solid black",
+  height: "16vh"
 };
 
 const ScheduleTable = (props: any) => {
@@ -51,31 +57,31 @@ const ScheduleTable = (props: any) => {
         </thead>
         <tbody>
           <tr>
-            <td>14:00</td>
+            <td style={tdStyle}>14:00</td>
             {makeTimeCells("14:00")}
           </tr>
           <tr>
-            <td>15:00</td>
+            <td style={tdStyle}>15:00</td>
             {makeTimeCells("15:00")}
           </tr>
           <tr>
-            <td>16:00</td>
+            <td style={tdStyle}>16:00</td>
             {makeTimeCells("16:00")}
           </tr>
           <tr>
-            <td>17:00</td>
+            <td style={tdStyle}>17:00</td>
             {makeTimeCells("17:00")}
           </tr>
           <tr>
-            <td>18:00</td>
+            <td style={tdStyle}>18:00</td>
             {makeTimeCells("18:00")}
           </tr>
           <tr>
-            <td>19:00</td>
+            <td style={tdStyle}>19:00</td>
             {makeTimeCells("19:00")}
           </tr>
           <tr>
-            <td>20:00</td>
+            <td style={tdStyle}>20:00</td>
             {makeTimeCells("20:00")}
           </tr>
         </tbody>

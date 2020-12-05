@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { IGroup } from "../../../data/dataTypes";
 import { getGroups } from "../../../data/getData";
-import ScheduleTable from "./ScheduleTable";
-import ColorLegend from "./ColorLegend";
+import ColorLegend from "../../common/ColorLegend";
+import ScheduleTable from "../../common/ScheduleTable";
 
 const Schedule = () => {
   const [groups, setGroups] = useState<IGroup[]>([]);

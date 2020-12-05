@@ -7,8 +7,8 @@ import UserSchedule from "./tabs/UserSchedule";
 import Incoming from "./tabs/Incoming";
 import ToMakeUp from "./tabs/ToMakeUp";
 import History from "./tabs/History";
-import { getPersonData } from "../../../data/getData";
-import { IPerson } from "../../../data/dataTypes";
+import { getPersonData, getGroupsFromIds } from "../../../data/getData";
+import { IPerson, IGroup } from "../../../data/dataTypes";
 
 const tabStyle: React.CSSProperties = {
   display: "flex",
@@ -37,6 +37,7 @@ const UserPanel = () => {
 
   const [mode, setMode] = useState(userClasses);
   const [userData, setUserData] = useState<IPerson | null>(null);
+  const [userGroups, setUserGroups] = useState<IGroup[]>([]);
 
   const getUserData = async () => {
     const personId = localStorage.getItem("personId");
@@ -48,8 +49,20 @@ const UserPanel = () => {
     }
   };
 
+  const getGroups = async () => {
+    if (userData) {
+      const Ids = userData.groupsIds;
+      const groups = await getGroupsFromIds(Ids);
+      return groups;
+    }
+  };
+
   const loadData = async () => {
     setUserData(await getUserData());
+    const groups = await getGroups();
+    if (groups) {
+      setUserGroups(groups);
+    }
   };
 
   useEffect(() => {
@@ -65,7 +78,7 @@ const UserPanel = () => {
       case userClasses:
         return <UserClasses groups={userData ? userData.groupsIds : null} />;
       case userSchedule:
-        return <UserSchedule />;
+        return <UserSchedule groups={userGroups} />;
       case incoming:
         return <Incoming />;
       case toMakeUp:

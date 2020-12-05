@@ -1,5 +1,5 @@
 import React from "react";
-import { IGroup } from "../../../data/dataTypes";
+import { IGroup } from "../../data/dataTypes";
 
 interface IProps {
   group: IGroup;

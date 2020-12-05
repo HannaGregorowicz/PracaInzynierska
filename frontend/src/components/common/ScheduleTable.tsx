@@ -1,6 +1,6 @@
 import React from "react";
 import TableCell from "./TableCell";
-import { IGroup } from "../../../data/dataTypes";
+import { IGroup } from "../../data/dataTypes";
 
 const tableStyle: React.CSSProperties = {
   width: "95%",
@@ -10,16 +10,17 @@ const tableStyle: React.CSSProperties = {
   textAlign: "center"
 };
 
-const tdStyle: React.CSSProperties = {
-  border: "1px solid black",
-  height: "16vh"
-};
-
 interface IProps {
   groups: IGroup[];
+  type?: string;
 }
 
 const ScheduleTable = (props: IProps) => {
+  const tdStyle: React.CSSProperties = {
+    border: "1px solid black",
+    height: props.type === "user" ? "8vh" : "16vh"
+  };
+
   const getGroups = (day: string, time: string) => {
     const data = [];
     for (const group of props.groups) {
@@ -31,7 +32,7 @@ const ScheduleTable = (props: IProps) => {
   };
 
   const makeCell = (day: string, time: string) => {
-    return <TableCell groups={getGroups(day, time)} />;
+    return <TableCell groups={getGroups(day, time)} type="user" />;
   };
 
   const makeTimeCells = (time: string) => {

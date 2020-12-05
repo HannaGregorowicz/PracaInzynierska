@@ -1,21 +1,22 @@
 import React from "react";
-import { IGroup } from "../../../data/dataTypes";
+import { IGroup } from "../../data/dataTypes";
 import GroupItem from "./GroupItem";
-
-const tdStyle: React.CSSProperties = {
-  whiteSpace: "pre",
-  border: "1px solid black",
-  height: "16vh",
-  textTransform: "capitalize",
-  width: "15%",
-  verticalAlign: "top"
-};
 
 interface IProps {
   groups: IGroup[];
+  type?: string;
 }
 
 const TableCell = (props: IProps) => {
+  const tdStyle: React.CSSProperties = {
+    whiteSpace: "pre",
+    border: "1px solid black",
+    height: props.type === "user" ? "8vh" : "16vh",
+    textTransform: "capitalize",
+    width: "15%",
+    verticalAlign: "top"
+  };
+
   const groups = props.groups;
 
   const makeGroupItem = (group: IGroup) => {

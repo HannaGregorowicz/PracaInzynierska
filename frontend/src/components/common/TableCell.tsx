@@ -20,7 +20,7 @@ const TableCell = (props: IProps) => {
   const groups = props.groups;
 
   const makeGroupItem = (group: IGroup) => {
-    return <GroupItem group={group} />;
+    return <GroupItem group={group} key={group.id} />;
   };
 
   return <td style={tdStyle}>{groups.map(makeGroupItem)}</td>;

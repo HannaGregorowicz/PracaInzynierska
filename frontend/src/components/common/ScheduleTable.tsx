@@ -32,7 +32,9 @@ const ScheduleTable = (props: IProps) => {
   };
 
   const makeCell = (day: string, time: string) => {
-    return <TableCell groups={getGroups(day, time)} type="user" />;
+    return (
+      <TableCell groups={getGroups(day, time)} type="user" key={day + time} />
+    );
   };
 
   const makeTimeCells = (time: string) => {

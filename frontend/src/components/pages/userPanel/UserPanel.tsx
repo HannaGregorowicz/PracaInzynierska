@@ -59,14 +59,13 @@ const UserPanel = () => {
 
   const loadData = async () => {
     setUserData(await getUserData());
-    const groups = await getGroups();
-    if (groups) {
-      setUserGroups(groups);
-    }
+    setUserGroups((await getGroups()) || []);
   };
 
   useEffect(() => {
-    loadData();
+    if (!userData || !userGroups.length) {
+      loadData();
+    }
   });
 
   const handleClick = (value: string) => {

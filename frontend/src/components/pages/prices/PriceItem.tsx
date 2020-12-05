@@ -23,11 +23,15 @@ const moreInfoStyle: React.CSSProperties = {
   bottom: "-10%"
 };
 
-const PriceItem = (props: any) => {
+interface IProps {
+  name: string;
+  price: string;
+  info?: string;
+}
+
+const PriceItem = (props: IProps) => {
   return (
     <div className="gridItem center" style={itemStyle}>
-      {/* <div style={titleStyle}>{props.name}</div>
-      <div style={priceStyle}>{props.price}</div> */}
       <div style={flexContainerStyle}>
         <div>{props.name}</div>
         <div>{props.price}</div>

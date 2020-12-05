@@ -16,8 +16,8 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
-  const [passwordMessage, setPasswordMessage] = useState<string | null>(null);
-  const [emailMessage, setEmailMessage] = useState<string | null>(null);
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     const encryptedPass = sha256(event.target.value as string).toString();
@@ -71,8 +71,8 @@ const Register = () => {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    setPasswordMessage(null);
-    setEmailMessage(null);
+    setPasswordMessage("");
+    setEmailMessage("");
 
     const isPassValid = isPasswordValid();
     const emailExists = await doesEmailExist();

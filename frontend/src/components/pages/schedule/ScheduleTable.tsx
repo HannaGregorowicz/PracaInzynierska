@@ -1,5 +1,6 @@
 import React from "react";
 import TableCell from "./TableCell";
+import { IGroup } from "../../../data/dataTypes";
 
 const tableStyle: React.CSSProperties = {
   width: "95%",
@@ -14,7 +15,11 @@ const tdStyle: React.CSSProperties = {
   height: "16vh"
 };
 
-const ScheduleTable = (props: any) => {
+interface IProps {
+  groups: IGroup[];
+}
+
+const ScheduleTable = (props: IProps) => {
   const getGroups = (day: string, time: string) => {
     const data = [];
     for (const group of props.groups) {

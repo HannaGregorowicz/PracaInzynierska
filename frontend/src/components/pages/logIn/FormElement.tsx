@@ -1,7 +1,16 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { labelStyle, inputStyle, errorStyle } from "./formStyles";
 
-const FormElement = (props: any) => {
+interface IProps {
+  displayName: string;
+  type: string;
+  name: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
+  message?: string;
+}
+
+const FormElement = (props: IProps) => {
   return (
     <>
       <label style={labelStyle} className={props.required ? "required" : ""}>

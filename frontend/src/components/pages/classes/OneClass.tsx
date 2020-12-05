@@ -15,7 +15,15 @@ const imageStyle: React.CSSProperties = {
 // Pomyslec nad detail view z obszerniejszym opisem i opiniami na temat
 // konkretnych grup od kursantow
 
-const OneClass = (props: any) => {
+interface IProps {
+  groups: any;
+  name: string;
+  imageName: string;
+  description: string;
+  className: string;
+}
+
+const OneClass = (props: IProps) => {
   const image = require(`../../../images/classes/${props.imageName}`);
   const formattedGroups = props.groups.map((group: any) => (
     <Group

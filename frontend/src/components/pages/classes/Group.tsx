@@ -11,7 +11,14 @@ const groupStyle: React.CSSProperties = {
   gridTemplateColumns: "1fr 1fr 1fr"
 };
 
-const Group = (props: any) => {
+interface IProps {
+  className?: string;
+  name: string;
+  time: string;
+  level: string;
+}
+
+const Group = (props: IProps) => {
   return (
     <div style={groupStyle} className={props.className + " center white"}>
       <p>{shortDayName(props.name)}</p>

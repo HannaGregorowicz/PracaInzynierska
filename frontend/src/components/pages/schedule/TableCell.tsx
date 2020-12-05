@@ -1,15 +1,25 @@
 import React from "react";
+import { IGroup } from "../../../data/dataTypes";
 
 const tdStyle: React.CSSProperties = {
   whiteSpace: "pre",
-  border: "1px solid black"
+  border: "1px solid black",
+  height: "16vh",
+  textTransform: "capitalize",
+  width: "15%"
 };
 
-const TableCell = (props: any) => {
+interface IProps {
+  groups: IGroup[];
+}
+
+const TableCell = (props: IProps) => {
+  const groups = props.groups;
+
   const getText = () => {
     let text = "";
-    if (props.groups.length) {
-      for (const group of props.groups) {
+    if (groups.length) {
+      for (const group of groups) {
         text = text.concat(`${group.name}\n`);
       }
     }

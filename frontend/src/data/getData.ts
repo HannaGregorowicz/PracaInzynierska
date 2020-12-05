@@ -27,3 +27,14 @@ export const getGroups = async () => {
   }
   return groups;
 };
+
+export const getGroupsFromIds = async (IDs: string[]) => {
+  let groups: IGroup[] = [];
+  for (const ID of IDs) {
+    const group = await makeLocalRequest(`/groups/${ID}`);
+    if (group) {
+      groups.push(await group.json());
+    }
+  }
+  return groups;
+};

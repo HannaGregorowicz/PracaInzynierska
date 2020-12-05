@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { register, isEmailInDb } from "./scripts/registerUser";
 import { createToken } from "./scripts/loginUser";
 import { getUser } from "./scripts/getUser";
-import { getClasses, getGroups } from "./scripts/getData";
+import { getClasses, getGroups, getGroup } from "./scripts/getData";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -15,6 +15,10 @@ router.get("/classes", (req: Request, res: Response) => {
 
 router.get("/groups", (req: Request, res: Response) => {
   getGroups(req, res);
+});
+
+router.get("/groups/:groupId", (req: Request, res: Response) => {
+  getGroup(req, res);
 });
 
 router.get("/userData/:personId", (req: Request, res: Response) => {

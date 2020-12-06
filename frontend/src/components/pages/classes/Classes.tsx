@@ -34,7 +34,9 @@ const Classes = () => {
   };
 
   useEffect(() => {
-    loadData();
+    if (!classes.length) {
+      loadData();
+    }
   });
 
   const formattedClasses = classes

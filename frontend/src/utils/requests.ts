@@ -18,3 +18,11 @@ export const makeLocalRequest = async (
   }
   return res;
 };
+
+export const signToGroup = async (groupId: string) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(`/groups/sign/${groupId}`, "PUT");
+  } catch (err) {}
+  return res;
+};

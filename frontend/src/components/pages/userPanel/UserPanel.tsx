@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { isTokenValid } from "../../../utils/jsonwebtoken";
 import { Redirect } from "react-router";
-import UserClasses from "./tabs/UserClasses";
+import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
 import Incoming from "./tabs/Incoming";
 import ToMakeUp from "./tabs/ToMakeUp";
@@ -75,7 +75,7 @@ const UserPanel = () => {
   const renderTab = (mode: string) => {
     switch (mode) {
       case userClasses:
-        return <UserClasses groups={userData ? userData.groupsIds : null} />;
+        return <UserClasses groups={userGroups} oneTimeGroups={[]} />;
       case userSchedule:
         return <UserSchedule groups={userGroups} />;
       case incoming:

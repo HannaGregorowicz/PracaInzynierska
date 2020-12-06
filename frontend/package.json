@@ -25,6 +25,7 @@
     "react-dom": "^16.14.0",
     "react-responsive": "^8.1.1",
     "react-scripts": "3.4.3",
+    "react-toastify": "^6.1.0",
     "react-tooltip": "^4.2.11",
     "styled-components": "^5.2.1",
     "typescript": "^3.7.5"

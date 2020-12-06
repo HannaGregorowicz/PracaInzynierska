@@ -39,7 +39,8 @@ const OneClass = (props: IProps) => {
   const formattedGroups = props.groups.map((group: any) => (
     <Group
       id={group.id}
-      name={group.day}
+      name={props.name}
+      day={group.day}
       time={group.time}
       level={group.level}
       key={group.id}
@@ -54,8 +55,9 @@ const OneClass = (props: IProps) => {
       {props.groups.length ? (
         <Group
           id="id"
+          name=""
           style={headerGroupStyle}
-          name="dzień"
+          day="dzień"
           time="godzina"
           level="poziom"
           className="lighter"

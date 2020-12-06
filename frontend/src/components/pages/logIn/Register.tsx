@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
+import { toast } from "react-toastify";
 import sha256 from "crypto-js/sha256";
 import { makeLocalRequest } from "../../../utils/requests";
 import FormElement from "./FormElement";
@@ -86,11 +87,10 @@ const Register = () => {
       };
       try {
         await makeLocalRequest("/register", "POST", JSON.stringify(body));
-        alert("Utworzono nowe konto! Możesz się teraz zalogować.");
+        toast.success("Utworzono nowe konto, możesz się teraz zalogować!");
         window.location.reload(false);
-        // TODO: React toastify
       } catch (err) {
-        console.error(err);
+        toast.error("Coś poszło nie tak, spróbuj ponownie!");
       }
     }
   };

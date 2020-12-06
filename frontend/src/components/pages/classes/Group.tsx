@@ -1,5 +1,6 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
+import { toast } from "react-toastify";
 import { shortDayName } from "../../../utils/dayParser";
 import { getBackgroundColor } from "../../../utils/getGroupColor";
 import { isTokenValid } from "../../../utils/jsonwebtoken";
@@ -16,11 +17,12 @@ const groupStyle: React.CSSProperties = {
 };
 
 interface IProps {
-  className?: string;
-  id: string;
   name: string;
+  id: string;
+  day: string;
   time: string;
   level: string;
+  className?: string;
   style?: React.CSSProperties;
 }
 
@@ -29,17 +31,23 @@ const Group = (props: IProps) => {
     if (isTokenValid()) {
       const res = await signToGroup(props.id);
       if (res) {
-        if (res.status === 409) {
-          // TODO: alert
-          console.log("Już należysz do tej grupy!");
-        } else if (res.status === 201) {
-          // TODO: alert
-          console.log("Zapisano do grupy!");
+        if (res.status === 201) {
+          toast.success(
+            `Zapisano do grupy: ${[
+              props.name,
+              props.level,
+              props.day,
+              props.time
+            ].join(" ")}`
+          );
+        } else if (res.status === 409) {
+          toast.error("Już należysz do tej grupy!");
+        } else {
+          toast.error("Coś poszło nie tak, spróbuj jeszcze raz!");
         }
       }
     } else {
       window.location.href = "/login";
-      // TODO: alert
     }
   };
 
@@ -55,7 +63,7 @@ const Group = (props: IProps) => {
         data-tip={!props.style ? "Zapisz się!" : null}
         onClick={handleClick}
       >
-        <p>{shortDayName(props.name)}</p>
+        <p>{shortDayName(props.day)}</p>
         <p>{props.time}</p>
         <p>{props.level}</p>
       </div>

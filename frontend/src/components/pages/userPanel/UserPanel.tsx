@@ -110,7 +110,6 @@ const UserPanel = () => {
   ) : (
     <Redirect to="/login" />
   );
-  // TODO: add alert that not logged in
 };
 
 export default UserPanel;

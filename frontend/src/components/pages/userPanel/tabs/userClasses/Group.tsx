@@ -1,6 +1,7 @@
 import React from "react";
-import { IGroup } from "../../../../../data/dataTypes";
+import { toast } from "react-toastify";
 import styled from "styled-components";
+import { IGroup } from "../../../../../data/dataTypes";
 import { isTokenValid } from "../../../../../utils/jsonwebtoken";
 import { signOutFromGroup } from "../../../../../utils/requests";
 
@@ -44,17 +45,21 @@ const Group = (props: IProps) => {
       const res = await signOutFromGroup(group.id);
       if (res) {
         if (res.status === 400) {
-          // TODO: alert
-          console.log("Coś poszło nie tak!");
+          toast.error("Coś poszło nie tak!");
         } else if (res.status === 200) {
-          // TODO: alert
           await props.reloadData();
-          console.log("Wypisano z grupy!");
+          toast.success(
+            `Wypisano z grupy: ${[
+              group.name,
+              group.level,
+              group.day,
+              group.time
+            ].join(" ")}`
+          );
         }
       }
     } else {
       window.location.href = "/login";
-      // TODO: alert
     }
   };
 

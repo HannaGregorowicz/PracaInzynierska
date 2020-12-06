@@ -4,7 +4,7 @@ import GroupItem from "./GroupItem";
 
 interface IProps {
   groups: IGroup[];
-  type?: string;
+  type: string;
 }
 
 const TableCell = (props: IProps) => {
@@ -20,7 +20,7 @@ const TableCell = (props: IProps) => {
   const groups = props.groups;
 
   const makeGroupItem = (group: IGroup) => {
-    return <GroupItem group={group} key={group.id} />;
+    return <GroupItem group={group} key={group.id} type={props.type} />;
   };
 
   return <td style={tdStyle}>{groups.map(makeGroupItem)}</td>;

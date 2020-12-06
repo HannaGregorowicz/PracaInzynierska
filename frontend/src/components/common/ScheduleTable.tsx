@@ -12,7 +12,7 @@ const tableStyle: React.CSSProperties = {
 
 interface IProps {
   groups: IGroup[];
-  type?: string;
+  type: string;
 }
 
 const ScheduleTable = (props: IProps) => {
@@ -33,7 +33,11 @@ const ScheduleTable = (props: IProps) => {
 
   const makeCell = (day: string, time: string) => {
     return (
-      <TableCell groups={getGroups(day, time)} type="user" key={day + time} />
+      <TableCell
+        groups={getGroups(day, time)}
+        type={props.type}
+        key={day + time}
+      />
     );
   };
 

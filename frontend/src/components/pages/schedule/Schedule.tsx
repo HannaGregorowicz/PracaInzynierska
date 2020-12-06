@@ -21,7 +21,7 @@ const Schedule = () => {
       <div className="contentContainer">
         <h2 className="center">Grafik</h2>
         <ColorLegend />
-        <ScheduleTable groups={groups} />
+        <ScheduleTable groups={groups} type="main" />
       </div>
       <div className="topDivider" />
     </>

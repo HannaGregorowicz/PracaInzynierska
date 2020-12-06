@@ -10,6 +10,7 @@ const divStyle: React.CSSProperties = {
 };
 
 // TODO (optional): Add password reseting
+// TODO: Add "why should i have an account" text
 
 const LogIn = () => {
   const [email, setEmail] = useState("");

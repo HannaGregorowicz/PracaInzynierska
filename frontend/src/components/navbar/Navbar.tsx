@@ -44,7 +44,7 @@ export const Navbar = () => {
   };
 
   // TODO: Fix responsive navbar when screen is wide but small height
-
+  // TODO: Change logo to be better
   return (
     <>
       <nav style={navStyle}>

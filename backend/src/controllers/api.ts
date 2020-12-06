@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
-import { register, isEmailInDb } from "./scripts/registerUser";
-import { createToken } from "./scripts/loginUser";
-import { getUser } from "./scripts/getUser";
-import { getClasses, getGroups, getGroup } from "./scripts/getData";
-import { signToGroup, signOutFromGroup } from "./scripts/signToGroup";
+import { register, isEmailInDb } from "../scripts/registerUser";
+import { createToken } from "../scripts/loginUser";
+import { getUser } from "../scripts/getUser";
+import { getClasses, getGroups, getGroup } from "../scripts/getData";
+import { signToGroup, signOutFromGroup } from "../scripts/signToGroup";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time

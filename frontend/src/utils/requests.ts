@@ -5,7 +5,7 @@ export const makeLocalRequest = async (
 ) => {
   let res;
   try {
-    res = await fetch(path, {
+    res = await fetch(`/api/${path}`, {
       method: method ? method : "GET",
       headers: {
         "Content-Type": "application/json",

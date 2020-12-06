@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
-import { toast } from "react-toastify";
+import Modal from "react-modal";
 import { shortDayName } from "../../../utils/dayParser";
 import { getBackgroundColor } from "../../../utils/getGroupColor";
-import { isTokenValid } from "../../../utils/jsonwebtoken";
-import { signToGroup } from "../../../utils/requests";
+import SignToGroupModal from "../../common/SignToGroupModal";
 
 const groupStyle: React.CSSProperties = {
   width: "100%",
@@ -14,6 +13,13 @@ const groupStyle: React.CSSProperties = {
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
   cursor: "pointer"
+};
+
+const modalStyle: React.CSSProperties = {
+  width: "40%",
+  height: "30vh",
+  margin: "auto",
+  padding: "40px"
 };
 
 interface IProps {
@@ -27,28 +33,14 @@ interface IProps {
 }
 
 const Group = (props: IProps) => {
-  const handleClick = async () => {
-    if (isTokenValid()) {
-      const res = await signToGroup(props.id);
-      if (res) {
-        if (res.status === 201) {
-          toast.success(
-            `Zapisano do grupy: ${[
-              props.name,
-              props.level,
-              props.day,
-              props.time
-            ].join(" ")}`
-          );
-        } else if (res.status === 409) {
-          toast.error("Już należysz do tej grupy!");
-        } else {
-          toast.error("Coś poszło nie tak, spróbuj jeszcze raz!");
-        }
-      }
-    } else {
-      window.location.href = "/login";
-    }
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -61,12 +53,29 @@ const Group = (props: IProps) => {
         }
         className={props.className + " center"}
         data-tip={!props.style ? "Zapisz się!" : null}
-        onClick={handleClick}
+        onClick={openModal}
       >
         <p>{shortDayName(props.day)}</p>
         <p>{props.time}</p>
         <p>{props.level}</p>
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        style={{ content: modalStyle }}
+        onRequestClose={closeModal}
+        contentLabel="Modal"
+      >
+        <SignToGroupModal
+          groupId={props.id}
+          groupName={props.name}
+          day={props.day}
+          time={props.time}
+          level={props.level}
+          closeModal={closeModal}
+        />
+      </Modal>
+
       <ReactTooltip place="right" effect="solid" />
     </>
   );

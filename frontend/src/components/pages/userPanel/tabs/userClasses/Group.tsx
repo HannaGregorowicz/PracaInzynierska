@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import { IGroup } from "../../../../../data/dataTypes";
@@ -39,9 +41,11 @@ interface IProps {
 
 const Group = (props: IProps) => {
   const group = props.group;
+  const [signedOut, setSignedOut] = useState(false);
 
   const handleSignOut = async () => {
     if (isTokenValid()) {
+      setSignedOut(true);
       const res = await signOutFromGroup(group.id);
       if (res) {
         if (res.status === 400) {
@@ -72,7 +76,17 @@ const Group = (props: IProps) => {
       <p>{group.instructor}</p>
       {props.type === "regular" && <Button>Zgłoś nieobecność</Button>}
       {props.type === "regular" && (
-        <Button onClick={handleSignOut}>Wypisz się</Button>
+        <Button onClick={handleSignOut}>
+          {signedOut && (
+            <FontAwesomeIcon
+              icon={faCircleNotch}
+              className="fasIcon"
+              spin
+              color="#3e0c6e"
+            />
+          )}
+          Wypisz się
+        </Button>
       )}
       {props.type === "oneTime" && <p />}
       {props.type === "oneTime" && <Button>Zrezygnuj</Button>}

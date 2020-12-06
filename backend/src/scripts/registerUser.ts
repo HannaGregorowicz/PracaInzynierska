@@ -18,7 +18,9 @@ export const register = async (body: RegisterRequestBody) => {
         password: body.password,
         phone: body.phone ? body.phone : "",
         role: "student",
-        groupsIds: []
+        groupsIds: [],
+        oneTimeGroupsIds: [],
+        absences: []
       }).save();
     } catch (err) {
       console.error(err);

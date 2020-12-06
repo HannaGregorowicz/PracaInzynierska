@@ -9,6 +9,12 @@ export interface IPerson extends mongoose.Document {
   phone: string;
   role: string;
   groupsIds: string[];
+  oneTimeGroupsIds: string[];
+  absences: {
+    groupId: string;
+    date: Date;
+    status: string;
+  }[];
 }
 
 const personSchema = new mongoose.Schema({
@@ -19,7 +25,15 @@ const personSchema = new mongoose.Schema({
   password: String,
   phone: String,
   role: String,
-  groupsIds: [String]
+  groupsIds: [String],
+  oneTimeGroupsIds: [String],
+  absences: [
+    {
+      groupId: String,
+      date: Date,
+      status: String
+    }
+  ]
 });
 
 export const Person = mongoose.model<IPerson>("Person", personSchema);

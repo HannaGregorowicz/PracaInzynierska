@@ -63,10 +63,9 @@ const UserPanel = () => {
   };
 
   useEffect(() => {
-    if (!userData || !userGroups.length) {
-      loadData();
-    }
-  });
+    loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userGroups]);
 
   const handleClick = (value: string) => {
     setMode(value);
@@ -75,7 +74,13 @@ const UserPanel = () => {
   const renderTab = (mode: string) => {
     switch (mode) {
       case userClasses:
-        return <UserClasses groups={userGroups} oneTimeGroups={[]} />;
+        return (
+          <UserClasses
+            groups={userGroups}
+            oneTimeGroups={[]}
+            reloadData={loadData}
+          />
+        );
       case userSchedule:
         return <UserSchedule groups={userGroups} />;
       case incoming:

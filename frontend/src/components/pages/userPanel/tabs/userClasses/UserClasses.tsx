@@ -13,15 +13,30 @@ const pStyle: React.CSSProperties = {
 interface IProps {
   groups: IGroup[];
   oneTimeGroups: IGroup[];
+  reloadData: () => Promise<void>;
 }
 
 const UserClasses = (props: IProps) => {
   const makeRegularGroup = (group: IGroup) => {
-    return <Group type="regular" group={group} />;
+    return (
+      <Group
+        key={group.id}
+        type="regular"
+        group={group}
+        reloadData={props.reloadData}
+      />
+    );
   };
 
   const makeOneTimeGroup = (group: IGroup) => {
-    return <Group type="oneTime" group={group} />;
+    return (
+      <Group
+        key={group.id}
+        type="oneTime"
+        group={group}
+        reloadData={props.reloadData}
+      />
+    );
   };
 
   return props.groups ? (

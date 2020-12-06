@@ -1,6 +1,8 @@
 import React from "react";
 import { IGroup } from "../../../../../data/dataTypes";
 import styled from "styled-components";
+import { isTokenValid } from "../../../../../utils/jsonwebtoken";
+import { signOutFromGroup } from "../../../../../utils/requests";
 
 const divStyle: React.CSSProperties = {
   textTransform: "capitalize",
@@ -29,12 +31,33 @@ const Button = styled.button`
 interface IProps {
   group: IGroup;
   type: string;
+  reloadData: () => Promise<void>;
 }
 
 // TODO: Handle these buttons
 
 const Group = (props: IProps) => {
   const group = props.group;
+
+  const handleSignOut = async () => {
+    if (isTokenValid()) {
+      const res = await signOutFromGroup(group.id);
+      if (res) {
+        if (res.status === 400) {
+          // TODO: alert
+          console.log("Coś poszło nie tak!");
+        } else if (res.status === 200) {
+          // TODO: alert
+          await props.reloadData();
+          console.log("Wypisano z grupy!");
+        }
+      }
+    } else {
+      window.location.href = "/login";
+      // TODO: alert
+    }
+  };
+
   return (
     <div style={divStyle}>
       <p>{group.name}</p>
@@ -43,7 +66,9 @@ const Group = (props: IProps) => {
       <p>{group.time}</p>
       <p>{group.instructor}</p>
       {props.type === "regular" && <Button>Zgłoś nieobecność</Button>}
-      {props.type === "regular" && <Button>Wypisz się</Button>}
+      {props.type === "regular" && (
+        <Button onClick={handleSignOut}>Wypisz się</Button>
+      )}
       {props.type === "oneTime" && <p />}
       {props.type === "oneTime" && <Button>Zrezygnuj</Button>}
     </div>

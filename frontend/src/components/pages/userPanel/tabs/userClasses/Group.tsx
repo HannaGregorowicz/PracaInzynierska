@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-import styled from "styled-components";
 import { IGroup } from "../../../../../data/dataTypes";
 import { isTokenValid } from "../../../../../utils/jsonwebtoken";
 import {
   signOutFromGroup,
   signOutFromGroupOnce
 } from "../../../../../utils/requests";
+import SignOutButton from "./SignOutButton";
 
 const divStyle: React.CSSProperties = {
   textTransform: "capitalize",
@@ -19,20 +17,6 @@ const divStyle: React.CSSProperties = {
   margin: "5px 0",
   borderRadius: "3px"
 };
-
-const Button = styled.button`
-  background: #ffffff;
-  padding: 3px;
-  border-radius: 3px;
-  font-size: 12pt;
-  margin: 0 5px;
-  border: 1px solid #3e0c6e;
-  cursor: pointer;
-
-  &:hover {
-    background: #eec9f0;
-  }
-`;
 
 interface IProps {
   group: IGroup;
@@ -82,33 +66,30 @@ const Group = (props: IProps) => {
       <p>{group.day}</p>
       <p>{group.time}</p>
       <p>{group.instructor}</p>
-      {props.type === "regular" && <Button>Zgłoś nieobecność</Button>}
       {props.type === "regular" && (
-        <Button onClick={() => handleSignOut("regular")}>
-          {signedOut && (
-            <FontAwesomeIcon
-              icon={faCircleNotch}
-              className="fasIcon"
-              spin
-              color="#3e0c6e"
-            />
-          )}
-          Wypisz się
-        </Button>
+        <SignOutButton
+          type="absence"
+          signedOut={signedOut}
+          handleSignOut={handleSignOut}
+          text="Zgłoś nieobecność"
+        />
+      )}
+      {props.type === "regular" && (
+        <SignOutButton
+          type="regular"
+          signedOut={signedOut}
+          handleSignOut={handleSignOut}
+          text="Wypisz się"
+        />
       )}
       {props.type === "oneTime" && <p />}
       {props.type === "oneTime" && (
-        <Button onClick={() => handleSignOut("oneTime")}>
-          {signedOut && (
-            <FontAwesomeIcon
-              icon={faCircleNotch}
-              className="fasIcon"
-              spin
-              color="#3e0c6e"
-            />
-          )}
-          Zrezygnuj
-        </Button>
+        <SignOutButton
+          type="oneTime"
+          signedOut={signedOut}
+          handleSignOut={handleSignOut}
+          text="Zrezygnuj"
+        />
       )}
     </div>
   );

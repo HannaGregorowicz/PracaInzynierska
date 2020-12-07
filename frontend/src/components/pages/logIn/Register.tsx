@@ -87,7 +87,7 @@ const Register = () => {
       };
       try {
         await makeLocalRequest("/register", "POST", JSON.stringify(body));
-        toast.success("Utworzono nowe konto, możesz się teraz zalogować!");
+        alert("Utworzono nowe konto, możesz się teraz zalogować!");
         window.location.reload(false);
       } catch (err) {
         toast.error("Coś poszło nie tak, spróbuj ponownie!");

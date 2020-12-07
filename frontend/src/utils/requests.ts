@@ -27,6 +27,14 @@ export const signToGroup = async (groupId: string) => {
   return res;
 };
 
+export const signToGroupOnce = async (groupId: string) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(`/groups/signInOnce/${groupId}`, "PUT");
+  } catch (err) {}
+  return res;
+};
+
 export const signOutFromGroup = async (groupId: string) => {
   let res = null;
   try {
@@ -35,10 +43,10 @@ export const signOutFromGroup = async (groupId: string) => {
   return res;
 };
 
-export const signToGroupOnce = async (groupId: string) => {
+export const signOutFromGroupOnce = async (groupId: string) => {
   let res = null;
   try {
-    res = await makeLocalRequest(`/groups/signInOnce/${groupId}`, "PUT");
+    res = await makeLocalRequest(`/groups/signOutOnce/${groupId}`, "PUT");
   } catch (err) {}
   return res;
 };

@@ -6,7 +6,8 @@ import { getClasses, getGroups, getGroup } from "../scripts/getData";
 import {
   signToGroup,
   signOutFromGroup,
-  signToGroupOnce
+  signToGroupOnce,
+  signOutFromGroupOnce
 } from "../scripts/signToGroup";
 
 const router = express.Router();
@@ -36,6 +37,10 @@ router.put("/groups/signInOnce/:groupId", (req: Request, res: Response) => {
 
 router.put("/groups/signOut/:groupId", (req: Request, res: Response) => {
   signOutFromGroup(req, res);
+});
+
+router.put("/groups/signOutOnce/:groupId", (req: Request, res: Response) => {
+  signOutFromGroupOnce(req, res);
 });
 
 router.get("/userData/:personId", (req: Request, res: Response) => {

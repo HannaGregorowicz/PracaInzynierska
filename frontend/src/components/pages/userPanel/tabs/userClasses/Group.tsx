@@ -5,7 +5,10 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 import { IGroup } from "../../../../../data/dataTypes";
 import { isTokenValid } from "../../../../../utils/jsonwebtoken";
-import { signOutFromGroup } from "../../../../../utils/requests";
+import {
+  signOutFromGroup,
+  signOutFromGroupOnce
+} from "../../../../../utils/requests";
 
 const divStyle: React.CSSProperties = {
   textTransform: "capitalize",
@@ -43,17 +46,22 @@ const Group = (props: IProps) => {
   const group = props.group;
   const [signedOut, setSignedOut] = useState(false);
 
-  const handleSignOut = async () => {
+  const handleSignOut = async (type: string) => {
     if (isTokenValid()) {
       setSignedOut(true);
-      const res = await signOutFromGroup(group.id);
+      let res;
+      if (type === "oneTime") {
+        res = await signOutFromGroupOnce(group.id);
+      } else if (type === "regular") {
+        res = await signOutFromGroup(group.id);
+      }
       if (res) {
         if (res.status === 400) {
           toast.error("Coś poszło nie tak!");
         } else if (res.status === 200) {
           await props.reloadData();
           toast.success(
-            `Wypisano z grupy: ${[
+            `Wypisano z zajęć: ${[
               group.name,
               group.level,
               group.day,
@@ -76,7 +84,7 @@ const Group = (props: IProps) => {
       <p>{group.instructor}</p>
       {props.type === "regular" && <Button>Zgłoś nieobecność</Button>}
       {props.type === "regular" && (
-        <Button onClick={handleSignOut}>
+        <Button onClick={() => handleSignOut("regular")}>
           {signedOut && (
             <FontAwesomeIcon
               icon={faCircleNotch}
@@ -89,7 +97,19 @@ const Group = (props: IProps) => {
         </Button>
       )}
       {props.type === "oneTime" && <p />}
-      {props.type === "oneTime" && <Button>Zrezygnuj</Button>}
+      {props.type === "oneTime" && (
+        <Button onClick={() => handleSignOut("oneTime")}>
+          {signedOut && (
+            <FontAwesomeIcon
+              icon={faCircleNotch}
+              className="fasIcon"
+              spin
+              color="#3e0c6e"
+            />
+          )}
+          Zrezygnuj
+        </Button>
+      )}
     </div>
   );
 };

@@ -75,7 +75,7 @@ const UserPanel = () => {
   useEffect(() => {
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userGroups]);
+  }, [userGroups, userOneTimeGroups]);
 
   const handleClick = (value: string) => {
     setMode(value);

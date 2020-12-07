@@ -3,7 +3,11 @@ import { register, isEmailInDb } from "../scripts/registerUser";
 import { createToken } from "../scripts/loginUser";
 import { getUser } from "../scripts/getUser";
 import { getClasses, getGroups, getGroup } from "../scripts/getData";
-import { signToGroup, signOutFromGroup } from "../scripts/signToGroup";
+import {
+  signToGroup,
+  signOutFromGroup,
+  signToGroupOnce
+} from "../scripts/signToGroup";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -24,6 +28,10 @@ router.get("/groups/:groupId", (req: Request, res: Response) => {
 
 router.put("/groups/signIn/:groupId", (req: Request, res: Response) => {
   signToGroup(req, res);
+});
+
+router.put("/groups/signInOnce/:groupId", (req: Request, res: Response) => {
+  signToGroupOnce(req, res);
 });
 
 router.put("/groups/signOut/:groupId", (req: Request, res: Response) => {

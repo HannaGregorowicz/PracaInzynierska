@@ -38,6 +38,7 @@ const UserPanel = () => {
   const [mode, setMode] = useState(userClasses);
   const [userData, setUserData] = useState<IPerson | null>(null);
   const [userGroups, setUserGroups] = useState<IGroup[]>([]);
+  const [userOneTimeGroups, setUserOneTimeGroups] = useState<IGroup[]>([]);
 
   const getUserData = async () => {
     const personId = localStorage.getItem("personId");
@@ -57,9 +58,18 @@ const UserPanel = () => {
     }
   };
 
+  const getOneTimeGroups = async () => {
+    if (userData) {
+      const Ids = userData.oneTimeGroupsIds;
+      const groups = await getGroupsFromIds(Ids);
+      return groups;
+    }
+  };
+
   const loadData = async () => {
     setUserData(await getUserData());
     setUserGroups((await getGroups()) || []);
+    setUserOneTimeGroups((await getOneTimeGroups()) || []);
   };
 
   useEffect(() => {
@@ -77,7 +87,7 @@ const UserPanel = () => {
         return (
           <UserClasses
             groups={userGroups}
-            oneTimeGroups={[]}
+            oneTimeGroups={userOneTimeGroups}
             reloadData={loadData}
           />
         );

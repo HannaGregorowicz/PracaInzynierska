@@ -19,7 +19,7 @@ export interface IPerson {
   phone: string;
   role: string;
   groupsIds: string[];
-  oneTimeGroupsIds: string;
+  oneTimeGroupsIds: string[];
   absences: {
     groupId: string;
     date: Date;

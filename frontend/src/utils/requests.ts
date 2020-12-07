@@ -34,3 +34,11 @@ export const signOutFromGroup = async (groupId: string) => {
   } catch (err) {}
   return res;
 };
+
+export const signToGroupOnce = async (groupId: string) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(`/groups/signInOnce/${groupId}`, "PUT");
+  } catch (err) {}
+  return res;
+};

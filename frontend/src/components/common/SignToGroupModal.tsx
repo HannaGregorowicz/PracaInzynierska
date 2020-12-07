@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { isTokenValid } from "../../utils/jsonwebtoken";
-import { signToGroup } from "../../utils/requests";
+import { signToGroup, signToGroupOnce } from "../../utils/requests";
 import { useMediaQuery } from "react-responsive";
 
 const Button = styled.button`
@@ -45,6 +45,33 @@ const SignToGroupModal = (props: IProps) => {
     margin: "auto"
   };
 
+  const handleOneTimeSignIn = async () => {
+    props.closeModal();
+    if (isTokenValid()) {
+      const res = await signToGroupOnce(props.groupId);
+      if (res) {
+        if (res.status === 201) {
+          toast.success(
+            `Zapisano jednorazowo do grupy: ${[
+              props.groupName,
+              props.level,
+              props.day,
+              props.time
+            ].join(" ")}`
+          );
+        } else if (res.status === 409) {
+          toast.error("Już należysz do tej grupy!");
+        } else if (res.status === 410) {
+          toast.error("Już jesteś jednorazowo w tej grupie!");
+        } else {
+          toast.error("Coś poszło nie tak, spróbuj jeszcze raz!");
+        }
+      }
+    } else {
+      window.location.href = "/login";
+    }
+  };
+
   const handleRegularSignIn = async () => {
     props.closeModal();
     if (isTokenValid()) {
@@ -83,7 +110,7 @@ const SignToGroupModal = (props: IProps) => {
       <div style={buttonContainerStyle}>
         <Button onClick={handleRegularSignIn}>Zapisz się na stałe</Button>
         <br />
-        <Button>Zapisz się jednorazowo</Button>
+        <Button onClick={handleOneTimeSignIn}>Zapisz się jednorazowo</Button>
       </div>
     </div>
   );

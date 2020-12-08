@@ -5,7 +5,6 @@ import { Redirect } from "react-router";
 import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
 import Absences from "./tabs/absences/Absences";
-import History from "./tabs/History";
 import { getPersonData, getGroupsFromIds } from "../../../data/getData";
 import { IPerson, IGroup } from "../../../data/dataTypes";
 
@@ -31,7 +30,6 @@ const UserPanel = () => {
   const userClasses = "userClasses";
   const userSchedule = "userSchedule";
   const absences = "absences";
-  const history = "history";
 
   const [mode, setMode] = useState(userClasses);
   const [userData, setUserData] = useState<IPerson | null>(null);
@@ -93,8 +91,6 @@ const UserPanel = () => {
         return <UserSchedule groups={userGroups} />;
       case absences:
         return <Absences />;
-      case history:
-        return <History />;
     }
   };
 
@@ -106,7 +102,6 @@ const UserPanel = () => {
           <Item onClick={() => handleClick(userClasses)}>Twoje zajęcia</Item>
           <Item onClick={() => handleClick(userSchedule)}>Twój grafik</Item>
           <Item onClick={() => handleClick(absences)}>Nieobecności</Item>
-          <Item onClick={() => handleClick(history)}>Historia</Item>
         </div>
         {renderTab(mode)}
       </div>

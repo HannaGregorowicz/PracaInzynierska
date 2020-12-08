@@ -38,3 +38,9 @@ export interface IGroup {
   level: string;
   peopleIds: string[];
 }
+
+export interface IAbsence {
+  groupId: string;
+  date: Date;
+  status: string;
+}

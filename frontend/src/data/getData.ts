@@ -1,4 +1,4 @@
-import { IClass, IPerson, IGroup } from "./dataTypes";
+import { IClass, IPerson, IGroup, IAbsence } from "./dataTypes";
 import { makeLocalRequest } from "../utils/requests";
 
 export const getClasses = async () => {
@@ -28,6 +28,13 @@ export const getGroups = async () => {
   return groups;
 };
 
+export const getSingleGroup = async (ID: string) => {
+  const group = await makeLocalRequest(`/groups/${ID}`);
+  if (group) {
+    return await group.json();
+  }
+};
+
 export const getGroupsFromIds = async (IDs: string[]) => {
   let groups: IGroup[] = [];
   for (const ID of IDs) {
@@ -37,4 +44,15 @@ export const getGroupsFromIds = async (IDs: string[]) => {
     }
   }
   return groups;
+};
+
+export const getUserAbsences = async () => {
+  let absences: IAbsence[] = [];
+  try {
+    const data = await makeLocalRequest(`/absence`);
+    if (data) {
+      absences = await data.json();
+    }
+  } catch (err) {}
+  return absences;
 };

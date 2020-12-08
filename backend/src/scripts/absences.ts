@@ -25,3 +25,14 @@ export const reportAbsence = async (req: Request, res: Response) => {
     res.status(400).send("Unauthorized.");
   }
 };
+
+export const getUserAbsences = async (req: Request, res: Response) => {
+  if (req.isAuth) {
+    const person = await Person.findOne({ id: req.personId }).exec();
+    if (person) {
+      res.status(200).json(person.absences);
+    }
+  } else {
+    res.status(400).send("Unauthorized.");
+  }
+};

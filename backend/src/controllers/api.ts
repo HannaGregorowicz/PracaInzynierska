@@ -9,7 +9,7 @@ import {
   signToGroupOnce,
   signOutFromGroupOnce
 } from "../scripts/signToGroup";
-import { reportAbsence } from "../scripts/absences";
+import { reportAbsence, getUserAbsences } from "../scripts/absences";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -71,6 +71,10 @@ router.get(
 
 router.post("/absence", (req: Request, res: Response) => {
   reportAbsence(req, res);
+});
+
+router.get("/absence", (req: Request, res: Response) => {
+  getUserAbsences(req, res);
 });
 
 export default router;

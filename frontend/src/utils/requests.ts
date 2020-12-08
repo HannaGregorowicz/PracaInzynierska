@@ -55,7 +55,6 @@ export const reportAbsence = async (body: any) => {
   let res = null;
   try {
     res = await makeLocalRequest("/absence", "POST", JSON.stringify(body));
-  } catch (err) {
-    return res;
-  }
+  } catch (err) {}
+  return res;
 };

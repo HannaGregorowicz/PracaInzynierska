@@ -19,6 +19,8 @@ export const reportAbsence = async (req: Request, res: Response) => {
       { id: req.personId },
       { $push: { absences: newAbsence } }
     );
+
+    res.status(200).send("Absence was reported.");
   } else {
     res.status(400).send("Unauthorized.");
   }

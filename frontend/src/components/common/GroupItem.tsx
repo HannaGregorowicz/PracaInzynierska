@@ -68,6 +68,7 @@ const GroupItem = (props: IProps) => {
           style={{ content: modalStyle }}
           onRequestClose={closeModal}
           contentLabel="Modal"
+          ariaHideApp={false}
         >
           <SignToGroupModal
             groupId={props.group.id}

@@ -21,7 +21,7 @@ interface IProps {
   type: string;
   text: string;
   signedOut: boolean;
-  handleSignOut: (type: string) => Promise<void>;
+  handleSignOut: ((type: string) => Promise<void>) | (() => void);
 }
 
 const SignOutButton = (props: IProps) => {

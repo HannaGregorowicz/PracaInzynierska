@@ -4,10 +4,10 @@ import { IGroup } from "../../../../../data/dataTypes";
 import { isTokenValid } from "../../../../../utils/jsonwebtoken";
 import {
   signOutFromGroup,
-  signOutFromGroupOnce,
-  reportAbsence
+  signOutFromGroupOnce
 } from "../../../../../utils/requests";
 import SignOutButton from "./SignOutButton";
+import AbsenceModal from "./AbsenceModal";
 
 const divStyle: React.CSSProperties = {
   textTransform: "capitalize",
@@ -25,22 +25,17 @@ interface IProps {
   reloadData: () => Promise<void>;
 }
 
-// TODO: Handle these buttons
-
 const Group = (props: IProps) => {
   const group = props.group;
   const [signedOut, setSignedOut] = useState(false);
-  // const [absenceModalOpen, setAbsenceModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleAbsence = async () => {
-    const body = {
-      date: new Date(),
-      groupId: group.id
-    };
-    const res = await reportAbsence(body);
-    if (res) {
-      console.log(res.status, await res.text());
-    }
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleSignOut = async (type: string) => {
@@ -73,38 +68,45 @@ const Group = (props: IProps) => {
   };
 
   return (
-    <div style={divStyle}>
-      <p>{group.name}</p>
-      <p>{group.level}</p>
-      <p>{group.day}</p>
-      <p>{group.time}</p>
-      <p>{group.instructor}</p>
-      {props.type === "regular" && (
-        <SignOutButton
-          type="absence"
-          signedOut={false}
-          handleSignOut={handleAbsence}
-          text="Zgłoś nieobecność"
-        />
-      )}
-      {props.type === "regular" && (
-        <SignOutButton
-          type="regular"
-          signedOut={signedOut}
-          handleSignOut={handleSignOut}
-          text="Wypisz się"
-        />
-      )}
-      {props.type === "oneTime" && <p />}
-      {props.type === "oneTime" && (
-        <SignOutButton
-          type="oneTime"
-          signedOut={signedOut}
-          handleSignOut={handleSignOut}
-          text="Zrezygnuj"
-        />
-      )}
-    </div>
+    <>
+      <div style={divStyle}>
+        <p>{group.name}</p>
+        <p>{group.level}</p>
+        <p>{group.day}</p>
+        <p>{group.time}</p>
+        <p>{group.instructor}</p>
+        {props.type === "regular" && (
+          <SignOutButton
+            type="absence"
+            signedOut={false}
+            handleSignOut={openModal}
+            text="Zgłoś nieobecność"
+          />
+        )}
+        {props.type === "regular" && (
+          <SignOutButton
+            type="regular"
+            signedOut={signedOut}
+            handleSignOut={handleSignOut}
+            text="Wypisz się"
+          />
+        )}
+        {props.type === "oneTime" && <p />}
+        {props.type === "oneTime" && (
+          <SignOutButton
+            type="oneTime"
+            signedOut={signedOut}
+            handleSignOut={handleSignOut}
+            text="Zrezygnuj"
+          />
+        )}
+      </div>
+      <AbsenceModal
+        closeModal={closeModal}
+        isModalOpen={isModalOpen}
+        group={group}
+      />
+    </>
   );
 };
 

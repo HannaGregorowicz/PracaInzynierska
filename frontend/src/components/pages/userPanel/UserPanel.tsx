@@ -4,8 +4,7 @@ import { isTokenValid } from "../../../utils/jsonwebtoken";
 import { Redirect } from "react-router";
 import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
-import Incoming from "./tabs/Incoming";
-import Absences from "./tabs/Absences";
+import Absences from "./tabs/absences/Absences";
 import History from "./tabs/History";
 import { getPersonData, getGroupsFromIds } from "../../../data/getData";
 import { IPerson, IGroup } from "../../../data/dataTypes";
@@ -31,8 +30,7 @@ const Item = styled.p`
 const UserPanel = () => {
   const userClasses = "userClasses";
   const userSchedule = "userSchedule";
-  const incoming = "incoming";
-  const toMakeUp = "toMakeUp";
+  const absences = "absences";
   const history = "history";
 
   const [mode, setMode] = useState(userClasses);
@@ -93,9 +91,7 @@ const UserPanel = () => {
         );
       case userSchedule:
         return <UserSchedule groups={userGroups} />;
-      case incoming:
-        return <Incoming />;
-      case toMakeUp:
+      case absences:
         return <Absences />;
       case history:
         return <History />;
@@ -109,8 +105,7 @@ const UserPanel = () => {
         <div style={tabStyle}>
           <Item onClick={() => handleClick(userClasses)}>Twoje zajęcia</Item>
           <Item onClick={() => handleClick(userSchedule)}>Twój grafik</Item>
-          <Item onClick={() => handleClick(incoming)}>Nadchodzące</Item>
-          <Item onClick={() => handleClick(toMakeUp)}>Do odrobienia</Item>
+          <Item onClick={() => handleClick(absences)}>Nieobecności</Item>
           <Item onClick={() => handleClick(history)}>Historia</Item>
         </div>
         {renderTab(mode)}

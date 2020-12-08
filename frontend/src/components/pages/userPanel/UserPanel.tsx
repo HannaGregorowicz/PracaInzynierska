@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
 import Incoming from "./tabs/Incoming";
-import ToMakeUp from "./tabs/ToMakeUp";
+import Absences from "./tabs/Absences";
 import History from "./tabs/History";
 import { getPersonData, getGroupsFromIds } from "../../../data/getData";
 import { IPerson, IGroup } from "../../../data/dataTypes";
@@ -96,7 +96,7 @@ const UserPanel = () => {
       case incoming:
         return <Incoming />;
       case toMakeUp:
-        return <ToMakeUp />;
+        return <Absences />;
       case history:
         return <History />;
     }

@@ -9,6 +9,7 @@ import {
   signToGroupOnce,
   signOutFromGroupOnce
 } from "../scripts/signToGroup";
+import { reportAbsence } from "../scripts/absences";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -67,5 +68,9 @@ router.get(
     res.json({ emailInDb: await isEmailInDb(req.params) });
   }
 );
+
+router.post("/absence", (req: Request, res: Response) => {
+  reportAbsence(req, res);
+});
 
 export default router;

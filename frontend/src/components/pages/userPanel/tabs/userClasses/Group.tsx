@@ -4,7 +4,8 @@ import { IGroup } from "../../../../../data/dataTypes";
 import { isTokenValid } from "../../../../../utils/jsonwebtoken";
 import {
   signOutFromGroup,
-  signOutFromGroupOnce
+  signOutFromGroupOnce,
+  reportAbsence
 } from "../../../../../utils/requests";
 import SignOutButton from "./SignOutButton";
 
@@ -29,6 +30,18 @@ interface IProps {
 const Group = (props: IProps) => {
   const group = props.group;
   const [signedOut, setSignedOut] = useState(false);
+  // const [absenceModalOpen, setAbsenceModalOpen] = useState(false);
+
+  const handleAbsence = async () => {
+    const body = {
+      date: new Date(),
+      groupId: group.id
+    };
+    const res = await reportAbsence(body);
+    if (res) {
+      console.log(res.status, await res.text());
+    }
+  };
 
   const handleSignOut = async (type: string) => {
     if (isTokenValid()) {
@@ -69,8 +82,8 @@ const Group = (props: IProps) => {
       {props.type === "regular" && (
         <SignOutButton
           type="absence"
-          signedOut={signedOut}
-          handleSignOut={handleSignOut}
+          signedOut={false}
+          handleSignOut={handleAbsence}
           text="Zgłoś nieobecność"
         />
       )}

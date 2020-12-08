@@ -50,3 +50,12 @@ export const signOutFromGroupOnce = async (groupId: string) => {
   } catch (err) {}
   return res;
 };
+
+export const reportAbsence = async (body: any) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest("/absence", "POST", JSON.stringify(body));
+  } catch (err) {
+    return res;
+  }
+};

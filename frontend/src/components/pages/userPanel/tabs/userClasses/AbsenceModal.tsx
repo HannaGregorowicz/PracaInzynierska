@@ -6,6 +6,7 @@ import { IGroup, IAbsence } from "../../../../../data/dataTypes";
 import { isTokenValid } from "../../../../../utils/jsonwebtoken";
 import { toast } from "react-toastify";
 import { getUserAbsences } from "../../../../../data/getData";
+import styled from "styled-components";
 
 const modalStyle: React.CSSProperties = {
   width: "40%",
@@ -13,6 +14,7 @@ const modalStyle: React.CSSProperties = {
   margin: "auto",
   padding: "40px",
   whiteSpace: "pre",
+  color: "#3e0c6e",
   textAlign: "center"
 };
 
@@ -25,6 +27,20 @@ const inputStyle: React.CSSProperties = {
 const labelStyle: React.CSSProperties = {
   fontSize: "14pt"
 };
+
+const Button = styled.button`
+  border-radius: 3px;
+  font-size: 14pt;
+  background: #3e0c6e;
+  color: #ffffff;
+  padding: 5px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 70%;
+  }
+`;
 
 interface IProps {
   closeModal: () => void;
@@ -146,7 +162,7 @@ const AbsenceModal = (props: IProps) => {
         {group.name.toUpperCase()} {group.day} {group.time} {group.instructor}
       </h3>
       {getInputs()}
-      <button onClick={handleAbsence}>Zgłoś nieobecność</button>
+      <Button onClick={handleAbsence}>Zgłoś nieobecność</Button>
     </Modal>
   );
 };

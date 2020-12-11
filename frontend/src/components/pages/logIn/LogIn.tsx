@@ -48,7 +48,7 @@ const LogIn = () => {
             if (isUser()) {
               window.location.href = "/user";
             } else if (isAdmin()) {
-              window.location.href = "/admin";
+              window.location.href = "/admin/users";
             } else {
               window.location.href = "/login";
             }

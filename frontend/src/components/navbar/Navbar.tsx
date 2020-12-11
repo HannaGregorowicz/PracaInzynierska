@@ -84,7 +84,7 @@ export const Navbar = () => {
               {isUser() ? (
                 <MenuItem href="/user" name="Twoje konto" icon={faUser} />
               ) : (
-                <MenuItem href="/admin" name="Panel" icon={faUser} />
+                <MenuItem href="/admin/users" name="Panel" icon={faUser} />
               )}
               <MenuItem
                 onClick={handleLogout}

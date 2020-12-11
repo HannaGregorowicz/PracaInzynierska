@@ -16,7 +16,9 @@ const Absences = () => {
 
   const loadData = async () => {
     let abs = await getUserAbsences();
-    // abs = abs.sort((a, b) => a.date.getTime() - b.date.getTime());
+    abs = abs.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
 
     setAbsences(abs);
   };

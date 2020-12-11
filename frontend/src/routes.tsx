@@ -7,6 +7,7 @@ import Classes from "./components/pages/classes/Classes";
 import Prices from "./components/pages/prices/Prices";
 import Contact from "./components/pages/contact/Contact";
 import LogInPanel from "./components/pages/logIn/LogInPanel";
+import AdminPanel from "./components/pages/adminPanel/AdminPanel";
 import UserPanel from "./components/pages/userPanel/UserPanel";
 import Schedule from "./components/pages/schedule/Schedule";
 
@@ -23,6 +24,7 @@ export default function Routes() {
         <Route path="/contact" component={Contact} />
         <Route path="/login" component={LogInPanel} />
         <Route path="/user" component={UserPanel} />
+        <Route path="/admin" component={AdminPanel} />
       </Switch>
       <Footer />
     </Router>

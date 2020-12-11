@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { isTokenValid } from "../../../utils/jsonwebtoken";
+import { isUser } from "../../../utils/jsonwebtoken";
 import { Redirect } from "react-router";
 import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
@@ -94,7 +94,7 @@ const UserPanel = () => {
     }
   };
 
-  return isTokenValid() ? (
+  return isUser() ? (
     <>
       <div className="bottomDivider"></div>
       <div className="contentContainer">

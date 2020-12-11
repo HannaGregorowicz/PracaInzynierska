@@ -27,7 +27,7 @@ import {
   ulLogInSmallStyle,
   divStyle
 } from "./navbarStyles";
-import { isTokenValid } from "../../utils/jsonwebtoken";
+import { isTokenValid, isUser } from "../../utils/jsonwebtoken";
 
 export const Navbar = () => {
   const isDesktop = useMediaQuery({
@@ -81,7 +81,11 @@ export const Navbar = () => {
         >
           {isTokenValid() ? (
             <>
-              <MenuItem href="/user" name="Twoje konto" icon={faUser} />
+              {isUser() ? (
+                <MenuItem href="/user" name="Twoje konto" icon={faUser} />
+              ) : (
+                <MenuItem href="/admin" name="Panel" icon={faUser} />
+              )}
               <MenuItem
                 onClick={handleLogout}
                 href="/"

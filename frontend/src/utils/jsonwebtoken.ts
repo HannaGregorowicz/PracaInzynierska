@@ -1,6 +1,14 @@
 import jwt from "jsonwebtoken";
 import config from "../config";
 
+export const isAdmin = () => {
+  return isTokenValid() && localStorage.getItem("personRole") === "admin";
+};
+
+export const isUser = () => {
+  return isTokenValid() && localStorage.getItem("personRole") === "student";
+};
+
 export const isTokenValid = () => {
   let isValid = false;
   const token = localStorage.getItem("token");

@@ -41,7 +41,9 @@ const Absences = () => {
   };
 
   const makeAbsence = (absence: IAbsence, type: string) => {
-    return <Absence absence={absence} type={type} />;
+    return (
+      <Absence key={absence.date.toString()} absence={absence} type={type} />
+    );
   };
 
   return (

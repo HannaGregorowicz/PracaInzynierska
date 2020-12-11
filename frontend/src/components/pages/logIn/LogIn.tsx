@@ -46,7 +46,7 @@ const LogIn = () => {
             const token = await res.text();
             saveToken(token);
             if (isUser()) {
-              window.location.href = "/user";
+              window.location.href = "/user/classes";
             } else if (isAdmin()) {
               window.location.href = "/admin/users";
             } else {

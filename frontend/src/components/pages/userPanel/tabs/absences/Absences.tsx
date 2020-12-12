@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getUserAbsences } from "../../../../../data/getData";
 import { IAbsence } from "../../../../../data/dataTypes";
 import Absence from "./Absence";
+import { containerStyle } from "../../../../common/styles";
 
 const pStyle: React.CSSProperties = {
   fontSize: "16pt",
@@ -47,7 +48,7 @@ const Absences = () => {
   };
 
   return (
-    <>
+    <div style={containerStyle}>
       <h3>Nieobecności</h3>
       <p style={pStyle}>Do odrobienia</p>
       {absences
@@ -65,7 +66,7 @@ const Absences = () => {
       {absences
         .filter(absence => absence.status === "Odrobiona")
         .map(abs => makeAbsence(abs, "Odrobiona"))}
-    </>
+    </div>
   );
 };
 

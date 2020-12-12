@@ -1,6 +1,7 @@
 import React from "react";
 import { IGroup } from "../../../../../data/dataTypes";
 import Group from "./Group";
+import { containerStyle } from "../../../../common/styles";
 
 const pStyle: React.CSSProperties = {
   fontSize: "16pt",
@@ -40,7 +41,7 @@ const UserClasses = (props: IProps) => {
   };
 
   return props.groups ? (
-    <>
+    <div style={containerStyle}>
       <h3>Twoje zajęcia</h3>
       <p style={pStyle}>Jednorazowe</p>
       {props.oneTimeGroups.length ? (
@@ -54,7 +55,7 @@ const UserClasses = (props: IProps) => {
       ) : (
         <p>Brak zajęć.</p>
       )}
-    </>
+    </div>
   ) : (
     <h3>Brak zajęć!</h3>
   );

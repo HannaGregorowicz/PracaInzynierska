@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { isUser } from "../../../utils/jsonwebtoken";
-import { Redirect, Route } from "react-router";
+import { Redirect } from "react-router";
 import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
 import Absences from "./tabs/absences/Absences";
@@ -9,6 +9,8 @@ import { getPersonData, getGroupsFromIds } from "../../../data/getData";
 import { IPerson, IGroup } from "../../../data/dataTypes";
 
 const tabStyle: React.CSSProperties = {
+  width: "95%",
+  margin: "auto",
   display: "flex",
   marginBottom: "20px"
 };
@@ -28,6 +30,11 @@ const Item = styled.a`
 `;
 
 const UserPanel = () => {
+  const userClasses = "userClasses";
+  const userSchedule = "userSchedule";
+  const absences = "absences";
+
+  const [mode, setMode] = useState(userClasses);
   const [userData, setUserData] = useState<IPerson | null>(null);
   const [userGroups, setUserGroups] = useState<IGroup[]>([]);
   const [userOneTimeGroups, setUserOneTimeGroups] = useState<IGroup[]>([]);
@@ -69,30 +76,37 @@ const UserPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userGroups, userOneTimeGroups]);
 
+  const handleClick = (value: string) => {
+    setMode(value);
+  };
+
+  const renderTab = (mode: string) => {
+    switch (mode) {
+      case userClasses:
+        return (
+          <UserClasses
+            groups={userGroups}
+            oneTimeGroups={userOneTimeGroups}
+            reloadData={loadData}
+          />
+        );
+      case userSchedule:
+        return <UserSchedule groups={userGroups} />;
+      case absences:
+        return <Absences />;
+    }
+  };
+
   return isUser() ? (
     <>
       <div className="bottomDivider"></div>
       <div className="contentContainer">
         <div style={tabStyle}>
-          <Item href="/user/classes">Twoje zajęcia</Item>
-          <Item href="/user/schedule">Twój grafik</Item>
-          <Item href="/user/absences">Nieobecności</Item>
+          <Item onClick={() => handleClick(userClasses)}>Twoje zajęcia</Item>
+          <Item onClick={() => handleClick(userSchedule)}>Twój grafik</Item>
+          <Item onClick={() => handleClick(absences)}>Nieobecności</Item>
         </div>
-        <Route
-          path="/user/classes"
-          component={() => (
-            <UserClasses
-              groups={userGroups}
-              oneTimeGroups={userOneTimeGroups}
-              reloadData={loadData}
-            />
-          )}
-        />
-        <Route
-          path="/user/schedule"
-          component={() => <UserSchedule groups={userGroups} />}
-        />
-        <Route path="/user/absences" component={Absences} />
+        {renderTab(mode)}
       </div>
       <div className="topDivider"></div>
     </>

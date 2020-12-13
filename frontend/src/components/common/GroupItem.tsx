@@ -4,6 +4,7 @@ import { IGroup } from "../../data/dataTypes";
 import { getBackgroundColor } from "../../utils/getGroupColor";
 import SignToGroupModal from "./SignToGroupModal";
 import ReactTooltip from "react-tooltip";
+import DeleteGroupModal from "./DeleteGroupModal";
 
 const gridContainerStyle: React.CSSProperties = {
   display: "grid",
@@ -52,7 +53,13 @@ const GroupItem = (props: IProps) => {
       <div
         style={{ ...itemStyle, background: getBackgroundColor(group.level) }}
         onClick={openModal}
-        data-tip="Zapisz się!"
+        data-tip={
+          props.type === "main"
+            ? "Zapisz się!"
+            : props.type === "admin"
+            ? "Usuń grupę"
+            : ""
+        }
       >
         {group.name}
         <br />
@@ -62,7 +69,7 @@ const GroupItem = (props: IProps) => {
         </div>
       </div>
 
-      {props.type !== "user" && (
+      {props.type === "main" && (
         <Modal
           isOpen={isModalOpen}
           style={{ content: modalStyle }}
@@ -77,6 +84,25 @@ const GroupItem = (props: IProps) => {
             time={props.group.time}
             level={props.group.level}
             closeModal={closeModal}
+          />
+        </Modal>
+      )}
+
+      {props.type === "admin" && (
+        <Modal
+          isOpen={isModalOpen}
+          style={{ content: modalStyle }}
+          onRequestClose={closeModal}
+          contentLabel="Modal"
+          ariaHideApp={false}
+        >
+          <DeleteGroupModal
+            groupId={props.group.id}
+            closeModal={closeModal}
+            groupName={props.group.name}
+            day={props.group.day}
+            time={props.group.time}
+            level={props.group.level}
           />
         </Modal>
       )}

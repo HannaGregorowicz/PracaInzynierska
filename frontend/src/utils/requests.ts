@@ -58,3 +58,19 @@ export const reportAbsence = async (body: any) => {
   } catch (err) {}
   return res;
 };
+
+export const addGroup = async (body: any) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest("/groups", "POST", JSON.stringify(body));
+  } catch (err) {}
+  return res;
+};
+
+export const deleteGroup = async (groupId: string, groupName: string) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(`/groups/${groupId}/${groupName}`, "DELETE");
+  } catch (err) {}
+  return res;
+};

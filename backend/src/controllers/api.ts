@@ -10,6 +10,7 @@ import {
   signOutFromGroupOnce
 } from "../scripts/signToGroup";
 import { reportAbsence, getUserAbsences } from "../scripts/absences";
+import { deleteGroup, addGroup } from "../scripts/groups";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -24,8 +25,16 @@ router.get("/groups", (req: Request, res: Response) => {
   getGroups(req, res);
 });
 
+router.post("/groups", (req: Request, res: Response) => {
+  addGroup(req, res);
+});
+
 router.get("/groups/:groupId", (req: Request, res: Response) => {
   getGroup(req, res);
+});
+
+router.delete("/groups/:groupId/:groupName", (req: Request, res: Response) => {
+  deleteGroup(req, res);
 });
 
 router.put("/groups/signIn/:groupId", (req: Request, res: Response) => {

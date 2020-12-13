@@ -5,6 +5,10 @@ import { makeLocalRequest } from "../../../utils/requests";
 import FormElement from "./FormElement";
 import { StyledInput } from "./formStyles";
 
+const divStyle: React.CSSProperties = {
+  borderLeft: "solid 3px #3e0c6e"
+};
+
 // TODO: Add captcha and terms
 
 const Register = () => {
@@ -97,7 +101,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="center">
+      <div className="center" style={divStyle}>
         <h3>
           Nie masz jeszcze konta? <br />
           Zarejestruj się!

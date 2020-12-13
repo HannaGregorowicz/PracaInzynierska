@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import LogIn from "./LogIn";
 import Register from "./Register";
 import { isTokenValid } from "../../../utils/jsonwebtoken";
+import LoginInfo from "./LoginInfo";
 
 const gridContainerStyle: React.CSSProperties = {
   display: "grid",
@@ -17,7 +18,10 @@ const LogInPanel = () => {
       <div className="bottomDivider" />
       <div className="contentContainer">
         <div style={gridContainerStyle}>
-          <LogIn />
+          <div>
+            <LogIn />
+            <LoginInfo />
+          </div>
           <Register />
         </div>
       </div>

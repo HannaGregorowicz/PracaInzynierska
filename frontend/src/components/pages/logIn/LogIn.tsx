@@ -6,11 +6,10 @@ import { makeLocalRequest } from "../../../utils/requests";
 import { saveToken, isUser, isAdmin } from "../../../utils/jsonwebtoken";
 
 const divStyle: React.CSSProperties = {
-  borderRight: "solid 3px #3e0c6e"
+  borderBottom: "solid 3px #3e0c6e"
 };
 
 // TODO (optional): Add password reseting
-// TODO: Add "why should i have an account" text
 
 const LogIn = () => {
   const [email, setEmail] = useState("");

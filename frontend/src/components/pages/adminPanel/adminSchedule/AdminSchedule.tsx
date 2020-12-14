@@ -5,6 +5,8 @@ import ScheduleTable from "../../../common/ScheduleTable";
 import { IGroup } from "../../../../data/dataTypes";
 import { getGroups } from "../../../../data/getData";
 import AddGroupModal from "./AddGroupModal";
+import { useMediaQuery } from "react-responsive";
+import SmallSchedulePanel from "../../../common/SmallSchedulePanel";
 
 const containerStyle: React.CSSProperties = {
   width: "95%",
@@ -37,7 +39,22 @@ const modalStyle: React.CSSProperties = {
   textAlign: "center"
 };
 
+const smallModalStyle: React.CSSProperties = {
+  width: "60%",
+  height: "60vh",
+  margin: "auto",
+  padding: "40px"
+};
+
 const AdminSchedule = () => {
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1200px)"
+  });
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 600px)"
+  });
+
   const [groups, setGroups] = useState<IGroup[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -61,13 +78,17 @@ const AdminSchedule = () => {
     <>
       <div style={containerStyle}>
         <h3>Grafik administratora</h3>
-        <Button className="center" onClick={openModal}>
+        <Button
+          className="center"
+          onClick={openModal}
+          style={isMobile ? { width: "100%" } : {}}
+        >
           Dodaj nową grupę!
         </Button>
       </div>
       <Modal
         isOpen={isModalOpen}
-        style={{ content: modalStyle }}
+        style={{ content: isDesktop ? modalStyle : smallModalStyle }}
         onRequestClose={closeModal}
         contentLabel="Modal"
         ariaHideApp={false}
@@ -75,7 +96,11 @@ const AdminSchedule = () => {
         <AddGroupModal closeModal={closeModal} />
       </Modal>
 
-      <ScheduleTable groups={groups} type="admin" />
+      {isDesktop ? (
+        <ScheduleTable groups={groups} type="admin" />
+      ) : (
+        <SmallSchedulePanel groups={groups} type="admin" />
+      )}
     </>
   );
 };

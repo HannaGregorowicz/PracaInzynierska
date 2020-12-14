@@ -101,7 +101,7 @@ const SignToGroupModal = (props: IProps) => {
     <div className="center">
       <div style={headerStyle}>
         <h2>
-          {props.groupName} {props.level}
+          {props.groupName.toUpperCase()} {props.level}
         </h2>
         <h3>
           {props.day} {props.time}

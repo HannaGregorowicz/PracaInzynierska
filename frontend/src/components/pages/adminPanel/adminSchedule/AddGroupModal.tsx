@@ -3,15 +3,10 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import { addGroup } from "../../../../utils/requests";
 import { isAdmin } from "../../../../utils/jsonwebtoken";
+import { useMediaQuery } from "react-responsive";
 
 const hStyle: React.CSSProperties = {
   marginBottom: "20px"
-};
-
-const inputStyle: React.CSSProperties = {
-  width: "80%",
-  fontSize: "14pt",
-  marginBottom: "10px"
 };
 
 const selectLabelStyle: React.CSSProperties = {
@@ -22,19 +17,16 @@ const selectStyle: React.CSSProperties = {
   marginRight: "20px"
 };
 
-const gridContainerStyle: React.CSSProperties = {
-  display: "grid",
-  width: "80%",
-  margin: "auto",
-  gridTemplateColumns: "1fr 2fr",
-  textAlign: "left"
-};
-
 const flexContainerStyle: React.CSSProperties = {
   display: "flex",
   width: "80%",
   margin: "auto",
   alignContent: "space-between"
+};
+
+const smallFormStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column"
 };
 
 const Button = styled.button`
@@ -63,6 +55,24 @@ const AddGroupModal = (props: IProps) => {
   const [instructor, setInstructor] = useState("");
   const [day, setDay] = useState("Poniedziałek");
   const [time, setTime] = useState("14:00");
+
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1200px)"
+  });
+
+  const inputStyle: React.CSSProperties = {
+    width: isDesktop ? "80%" : "100%",
+    fontSize: "14pt",
+    marginBottom: "10px"
+  };
+
+  const gridContainerStyle: React.CSSProperties = {
+    display: "grid",
+    width: "80%",
+    margin: "auto",
+    gridTemplateColumns: isDesktop ? "1fr 2fr" : "1fr",
+    textAlign: isDesktop ? "left" : "center"
+  };
 
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -112,7 +122,7 @@ const AddGroupModal = (props: IProps) => {
   };
 
   return (
-    <div>
+    <div className={isDesktop ? "" : "center"}>
       <h3 style={hStyle}>Dodawanie grupy</h3>
       <div style={gridContainerStyle}>
         <label>Nazwa zajęć</label>
@@ -133,7 +143,7 @@ const AddGroupModal = (props: IProps) => {
           placeholder="Wpisz instruktora"
         />
       </div>
-      <div style={flexContainerStyle}>
+      <div style={isDesktop ? flexContainerStyle : smallFormStyle}>
         <label style={selectLabelStyle}>Poziom:</label>
         <select name="level" style={selectStyle} onChange={handleLevelChange}>
           <option value="P0">P0</option>

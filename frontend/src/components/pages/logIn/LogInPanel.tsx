@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import { Redirect } from "react-router";
 import LogIn from "./LogIn";
 import Register from "./Register";
@@ -10,14 +11,23 @@ const gridContainerStyle: React.CSSProperties = {
   gridTemplateColumns: "1fr 1fr"
 };
 
+const smallGridContainerStyle: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1fr"
+};
+
 const LogInPanel = () => {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 600px)"
+  });
+
   return isTokenValid() ? (
     <Redirect to="/user" />
   ) : (
     <>
       <div className="bottomDivider" />
       <div className="contentContainer">
-        <div style={gridContainerStyle}>
+        <div style={isMobile ? smallGridContainerStyle : gridContainerStyle}>
           <div>
             <LogIn />
             <LoginInfo />

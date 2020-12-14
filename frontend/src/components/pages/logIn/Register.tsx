@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import { toast } from "react-toastify";
+import { useMediaQuery } from "react-responsive";
 import sha256 from "crypto-js/sha256";
 import { makeLocalRequest } from "../../../utils/requests";
 import FormElement from "./FormElement";
@@ -7,6 +8,10 @@ import { StyledInput } from "./formStyles";
 
 const divStyle: React.CSSProperties = {
   borderLeft: "solid 3px #3e0c6e"
+};
+
+const smallDivStyle: React.CSSProperties = {
+  borderTop: "solid 3px #3e0c6e"
 };
 
 // TODO: Add captcha and terms
@@ -23,6 +28,10 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 600px)"
+  });
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     const encryptedPass = sha256(event.target.value as string).toString();
@@ -101,7 +110,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="center" style={divStyle}>
+      <div className="center" style={isMobile ? smallDivStyle : divStyle}>
         <h3>
           Nie masz jeszcze konta? <br />
           Zarejestruj się!

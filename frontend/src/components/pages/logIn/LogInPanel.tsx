@@ -1,6 +1,6 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 import LogIn from "./LogIn";
 import Register from "./Register";
 import { isTokenValid } from "../../../utils/jsonwebtoken";

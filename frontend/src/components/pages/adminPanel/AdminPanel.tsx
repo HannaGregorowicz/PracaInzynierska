@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { isAdmin } from "../../../utils/jsonwebtoken";
-import { Redirect, Route } from "react-router";
+import { Redirect, Route } from "react-router-dom";
 import Users from "./users/Users";
 import AdminSchedule from "./adminSchedule/AdminSchedule";
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { isUser } from "../../../utils/jsonwebtoken";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 import UserClasses from "./tabs/userClasses/UserClasses";
 import UserSchedule from "./tabs/UserSchedule";
 import Absences from "./tabs/absences/Absences";

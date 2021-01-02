@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import HomePage from "./components/pages/homePage/HomePage";
 import Classes from "./components/pages/classes/Classes";
 import Prices from "./components/pages/prices/Prices";
+import Instructors from "./components/pages/instructors/Instructors";
 import Contact from "./components/pages/contact/Contact";
 import LogInPanel from "./components/pages/logIn/LogInPanel";
 import AdminPanel from "./components/pages/adminPanel/AdminPanel";
@@ -30,7 +31,3 @@ export default function Routes() {
     </Router>
   );
 }
-
-const Instructors = () => {
-  return <h2>Instruktorzy</h2>;
-};

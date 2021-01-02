@@ -83,3 +83,11 @@ body {
   content: "*";
   color: #ff0000;
 }
+
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  width: 90%;
+}

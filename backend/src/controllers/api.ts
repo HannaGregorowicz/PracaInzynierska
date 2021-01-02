@@ -2,7 +2,13 @@ import express, { Request, Response } from "express";
 import { register, isEmailInDb } from "../scripts/registerUser";
 import { createToken } from "../scripts/loginUser";
 import { getUser } from "../scripts/getUser";
-import { getClasses, getGroups, getGroup } from "../scripts/getData";
+import {
+  getClasses,
+  getGroups,
+  getGroup,
+  getUsers,
+  getInstructors
+} from "../scripts/getData";
 import {
   signToGroup,
   signOutFromGroup,
@@ -19,6 +25,10 @@ router.get("/", async (req: Request, res: Response) => {});
 
 router.get("/classes", (req: Request, res: Response) => {
   getClasses(req, res);
+});
+
+router.get("/instructors", (req: Request, res: Response) => {
+  getInstructors(req, res);
 });
 
 router.get("/groups", (req: Request, res: Response) => {
@@ -57,6 +67,10 @@ router.get("/userData/:personId", (req: Request, res: Response) => {
   getUser(req, res);
 });
 
+router.get("/users", (req: Request, res: Response) => {
+  getUsers(req, res);
+});
+
 router.post("/register", async (req: Request, res: Response) => {
   await register(req.body);
   res.redirect("/");
@@ -82,7 +96,7 @@ router.post("/absence", (req: Request, res: Response) => {
   reportAbsence(req, res);
 });
 
-router.get("/absence", (req: Request, res: Response) => {
+router.get("/absence/:userId", (req: Request, res: Response) => {
   getUserAbsences(req, res);
 });
 

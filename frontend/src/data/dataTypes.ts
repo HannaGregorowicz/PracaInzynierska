@@ -44,3 +44,11 @@ export interface IAbsence {
   date: Date;
   status: string;
 }
+
+export interface IInstructor {
+  id: string;
+  name: string;
+  danceStyles: string[];
+  description: string;
+  imageName: string;
+}

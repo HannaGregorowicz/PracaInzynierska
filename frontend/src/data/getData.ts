@@ -1,4 +1,4 @@
-import { IClass, IPerson, IGroup, IAbsence } from "./dataTypes";
+import { IClass, IPerson, IGroup, IAbsence, IInstructor } from "./dataTypes";
 import { makeLocalRequest } from "../utils/requests";
 
 export const getClasses = async () => {
@@ -8,6 +8,15 @@ export const getClasses = async () => {
     classes = await fetchedClasses.json();
   }
   return classes;
+};
+
+export const getInstructors = async () => {
+  let instructors: IInstructor[] = [];
+  const fetchedInstructors = await makeLocalRequest("/instructors");
+  if (fetchedInstructors) {
+    instructors = await fetchedInstructors.json();
+  }
+  return instructors;
 };
 
 export const getPersonData = async (personId: string) => {
@@ -28,6 +37,15 @@ export const getGroups = async () => {
   return groups;
 };
 
+export const getUsers = async () => {
+  let users: IPerson[] = [];
+  const fetchedUsers = await makeLocalRequest("/users");
+  if (fetchedUsers) {
+    users = await fetchedUsers.json();
+  }
+  return users;
+};
+
 export const getSingleGroup = async (ID: string) => {
   const group = await makeLocalRequest(`/groups/${ID}`);
   if (group) {
@@ -46,10 +64,10 @@ export const getGroupsFromIds = async (IDs: string[]) => {
   return groups;
 };
 
-export const getUserAbsences = async () => {
+export const getUserAbsences = async (userId: string) => {
   let absences: IAbsence[] = [];
   try {
-    const data = await makeLocalRequest(`/absence`);
+    const data = await makeLocalRequest(`/absence/${userId}`);
     if (data) {
       absences = await data.json();
     }

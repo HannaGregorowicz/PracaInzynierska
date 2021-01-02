@@ -16,7 +16,7 @@ const Absences = () => {
   const [absences, setAbsences] = useState<IAbsence[]>([]);
 
   const loadData = async () => {
-    let abs = await getUserAbsences();
+    let abs = await getUserAbsences(localStorage.getItem("personId")!);
     abs = abs.sort(
       (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     );

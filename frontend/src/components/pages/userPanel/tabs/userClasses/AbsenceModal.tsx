@@ -61,7 +61,7 @@ const AbsenceModal = (props: IProps) => {
   const dates = getNextAbsenceDates(group.day);
 
   const loadData = async () => {
-    let abs = await getUserAbsences();
+    let abs = await getUserAbsences(localStorage.getItem("personId")!);
     setAbsences(abs);
   };
 

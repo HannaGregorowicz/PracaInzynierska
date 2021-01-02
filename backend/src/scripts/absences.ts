@@ -28,7 +28,7 @@ export const reportAbsence = async (req: Request, res: Response) => {
 
 export const getUserAbsences = async (req: Request, res: Response) => {
   if (req.isAuth) {
-    const person = await Person.findOne({ id: req.personId }).exec();
+    const person = await Person.findOne({ id: req.params.userId }).exec();
     if (person) {
       res.status(200).json(person.absences);
     }

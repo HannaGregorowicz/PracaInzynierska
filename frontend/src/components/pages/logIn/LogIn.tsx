@@ -43,7 +43,7 @@ const LogIn = () => {
         if (res) {
           if (res.status === 200) {
             const token = await res.text();
-            saveToken(token);
+            saveToken(token, email);
             if (isUser()) {
               window.location.href = "/user";
             } else if (isAdmin()) {

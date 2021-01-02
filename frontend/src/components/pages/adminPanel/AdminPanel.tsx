@@ -4,6 +4,7 @@ import { isAdmin } from "../../../utils/jsonwebtoken";
 import { Redirect, Route } from "react-router-dom";
 import Users from "./users/Users";
 import AdminSchedule from "./adminSchedule/AdminSchedule";
+import StudentDetails from "./users/StudentDetails";
 
 const tabStyle: React.CSSProperties = {
   display: "flex",

@@ -1,26 +1,27 @@
 import React from "react";
 
 const itemStyle: React.CSSProperties = {
-  height: "15vh",
-  backgroundColor: "#6b1275",
-  color: "#ffffff",
-  borderRadius: "10px",
-  padding: "10px",
-  fontSize: "15pt",
-  border: "solid 4px #3e0c6e"
+  backgroundColor: "#d8bce8",
+  color: "#3e0c6e",
+  borderRadius: "5px",
+  fontSize: "15pt"
 };
 
-const flexContainerStyle: React.CSSProperties = {
-  height: "65%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between"
+const nameStyle: React.CSSProperties = {
+  ...itemStyle,
+  backgroundColor: "#f5e3ff",
+  padding: "10px"
+};
+
+const priceStyle: React.CSSProperties = {
+  ...itemStyle,
+  padding: "10px"
 };
 
 const moreInfoStyle: React.CSSProperties = {
+  ...itemStyle,
   fontSize: "10pt",
-  position: "relative",
-  bottom: "-10%"
+  padding: "10px"
 };
 
 interface IProps {
@@ -32,12 +33,9 @@ interface IProps {
 const PriceItem = (props: IProps) => {
   return (
     <div className="gridItem center" style={itemStyle}>
-      <div style={flexContainerStyle}>
-        <div>{props.name}</div>
-        <div>{props.price}</div>
-      </div>
-
-      {props.info ? <div style={moreInfoStyle}>{props.info}</div> : null}
+      <div style={nameStyle}>{props.name}</div>
+      <div style={priceStyle}>{props.price}</div>
+      {props.info && <div style={moreInfoStyle}>{props.info}</div>}
     </div>
   );
 };

@@ -31,7 +31,7 @@ export const pricesList = [
     price: "80 zł/h"
   },
   {
-    name: "Pierwszy taniec - pakiet 10 lekcji",
+    name: "Pierwszy taniec - pakiet 10 lekcji (5 tygodni po 2 godziny)",
     price: "50 zł/h - całość 500 zł"
   },
   {

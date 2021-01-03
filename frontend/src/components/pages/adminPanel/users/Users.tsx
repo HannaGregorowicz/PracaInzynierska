@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import { IPerson } from "../../../../data/dataTypes";
 import { getUsers } from "../../../../data/getData";
 import StudentItem from "./StudentItem";
+import AdminItem from "./AdminItem";
 
 const divStyle: React.CSSProperties = {
   width: "95%",
@@ -34,7 +35,7 @@ const Users = () => {
   };
 
   const makeAdmin = (user: IPerson) => {
-    return <StudentItem user={user} key={user.id} />;
+    return <AdminItem user={user} key={user.id} />;
   };
 
   const makeStudents = () => {

@@ -15,8 +15,13 @@ import {
   signToGroupOnce,
   signOutFromGroupOnce
 } from "../scripts/signToGroup";
-import { reportAbsence, getUserAbsences } from "../scripts/absences";
+import {
+  reportAbsence,
+  getUserAbsences,
+  makeAbsenceDone
+} from "../scripts/absences";
 import { deleteGroup, addGroup } from "../scripts/groups";
+import { addAdminRights, removeAdminRights } from "../scripts/adminRights";
 
 const router = express.Router();
 // TODO: Add more status codes if enough time
@@ -96,8 +101,20 @@ router.post("/absence", (req: Request, res: Response) => {
   reportAbsence(req, res);
 });
 
+router.put("/absence/:userId", (req: Request, res: Response) => {
+  makeAbsenceDone(req, res);
+});
+
 router.get("/absence/:userId", (req: Request, res: Response) => {
   getUserAbsences(req, res);
+});
+
+router.post("/admin/:userId", (req: Request, res: Response) => {
+  addAdminRights(req, res);
+});
+
+router.delete("/admin/:userId", (req: Request, res: Response) => {
+  removeAdminRights(req, res);
 });
 
 export default router;

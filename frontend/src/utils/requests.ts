@@ -59,6 +59,18 @@ export const reportAbsence = async (body: any) => {
   return res;
 };
 
+export const makeAbsenceDone = async (userId: string, body: any) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(
+      `/absence/${userId}`,
+      "PUT",
+      JSON.stringify(body)
+    );
+  } catch (err) {}
+  return res;
+};
+
 export const addGroup = async (body: any) => {
   let res = null;
   try {
@@ -71,6 +83,22 @@ export const deleteGroup = async (groupId: string, groupName: string) => {
   let res = null;
   try {
     res = await makeLocalRequest(`/groups/${groupId}/${groupName}`, "DELETE");
+  } catch (err) {}
+  return res;
+};
+
+export const giveUserAdminRights = async (userId: string) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(`/admin/${userId}`, "POST");
+  } catch (err) {}
+  return res;
+};
+
+export const removeUserAdminRights = async (userId: string) => {
+  let res = null;
+  try {
+    res = await makeLocalRequest(`/admin/${userId}`, "DELETE");
   } catch (err) {}
   return res;
 };

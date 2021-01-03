@@ -36,3 +36,31 @@ export const getUserAbsences = async (req: Request, res: Response) => {
     res.status(400).send("Unauthorized.");
   }
 };
+
+export const makeAbsenceDone = async (req: Request, res: Response) => {
+  if (req.isAuth) {
+    await Person.findOneAndUpdate(
+      { id: req.params.userId },
+      {
+        $pull: { absences: { groupId: req.body.groupId, date: req.body.date } }
+      }
+    );
+
+    await Person.findOneAndUpdate(
+      { id: req.params.userId },
+      {
+        $push: {
+          absences: {
+            groupId: req.body.groupId,
+            date: req.body.date,
+            status: "Odrobiona"
+          }
+        }
+      }
+    );
+
+    res.status(200).send("Absence is done.");
+  } else {
+    res.status(400).send("Unauthorized.");
+  }
+};

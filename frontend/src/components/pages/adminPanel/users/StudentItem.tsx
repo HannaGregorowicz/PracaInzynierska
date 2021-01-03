@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import Modal from "react-modal";
 import { IPerson } from "../../../../data/dataTypes";
 import StudentDetails from "./StudentDetails";
@@ -8,8 +9,24 @@ const divStyle: React.CSSProperties = {
   padding: "10px",
   background: "#e8f7fa",
   margin: "10px 0",
-  borderRadius: "3px"
+  borderRadius: "3px",
+  display: "flex",
+  justifyContent: "space-between"
 };
+
+const Button = styled.button`
+  cursor: pointer;
+  color: #3e0c6e;
+  background-color: #ffffff;
+  font-size: 12pt;
+  border-radius: 5px;
+  padding: 3px;
+  border-color: #3e0c6e;
+
+  &:hover {
+    background: #f7e6ff;
+  }
+`;
 
 interface IProps {
   user: IPerson;
@@ -26,7 +43,7 @@ const StudentItem = (props: IProps) => {
 
   const modalStyle: React.CSSProperties = {
     width: isMobile ? "80%" : isDesktop ? "40%" : "60%",
-    height: "70%",
+    height: "50%",
     margin: "auto"
   };
 
@@ -39,8 +56,13 @@ const StudentItem = (props: IProps) => {
   };
 
   return (
-    <div style={divStyle} onClick={openModal}>
-      {props.user.firstName} {props.user.lastName}
+    <>
+      <div style={divStyle}>
+        <div>
+          {props.user.firstName} {props.user.lastName}
+        </div>
+        <Button onClick={openModal}>Szczegóły</Button>
+      </div>
       <Modal
         isOpen={isModalOpen}
         style={{ content: modalStyle }}
@@ -48,9 +70,9 @@ const StudentItem = (props: IProps) => {
         contentLabel="Modal"
         ariaHideApp={false}
       >
-        <StudentDetails user={props.user} />
+        <StudentDetails user={props.user} close={closeModal} />
       </Modal>
-    </div>
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ const SmallSchedulePanel = (props: IProps) => {
   };
 
   const makeGroup = (group: IGroup) => {
-    return <SmallGroupItem group={group} type={props.type} />;
+    return <SmallGroupItem group={group} type={props.type} key={group.id} />;
   };
 
   const makeGroupsForDay = (day: string) => {

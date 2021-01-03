@@ -22,8 +22,7 @@ const headerGroupStyle: React.CSSProperties = {
   color: "#ffffff"
 };
 
-// TODO: hover z przyciskiem "zapisz sie!"
-// Pomyslec nad detail view z obszerniejszym opisem i opiniami na temat
+// TODO: Pomyslec nad detail view z obszerniejszym opisem i opiniami na temat
 // konkretnych grup od kursantow
 
 interface IProps {

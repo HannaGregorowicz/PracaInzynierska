@@ -50,13 +50,15 @@ const Absence = (props: IProps) => {
         {props.type === "Do odrobienia"
           ? "Termin odróbki:"
           : props.type === "Odrobiona"
-          ? "Odrobiono."
+          ? ""
           : "Po terminie:"}
       </p>
       <p>
-        {getDueDate(absence)
-          .toString()
-          .substring(4, 15)}
+        {props.type !== "Odrobiona"
+          ? getDueDate(absence)
+              .toString()
+              .substring(4, 15)
+          : ""}
       </p>
     </div>
   ) : null;
